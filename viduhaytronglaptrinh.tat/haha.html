@@ -132,8 +132,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus aspernatur
                                     <p><a href="#">diachiemail@gmail.com</a></p>
                                 </li>
                                 <li>
-                                    <button type="button" class="btn btn--primary  uppercase">Đăng nhập</button>
-                                    <button type="button" class="btn btn--primary  uppercase">Đăng ký</button>
+                                    <form class="form">
+                                        <input type="email" class="form__field" placeholder="Đăng kí ngay!" />
+                                        <button type="button" class="btn btn--primary  uppercase">Gửi</button>
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -142,7 +144,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus aspernatur
             </div>
         </div>
     </div>
-    <script>
+    <script>    
         $(document).ready(function () {
             var btnMenu = document.querySelector("#btn-menu");
             var containerSidebar = document.querySelector(".container__sidebar");

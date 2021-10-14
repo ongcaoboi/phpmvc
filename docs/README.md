@@ -4,4 +4,4 @@
 # Dự án do 3 sinh viên gồm:
 # Trưởng nhóm: Hứa Tuấn Anh
 # Thành viên: Nguyễn Văn Hoài Trung
-# Thành viên: Lê Hông Tụ
+# Thành viên: Lê Hồng Tụ

@@ -197,6 +197,9 @@
 	transition: 0.4s;
 }
 
+.container__main-content {
+    font-size: 10rem;
+}
 .acctive-nav {
 	margin-left: -20rem;
 }
