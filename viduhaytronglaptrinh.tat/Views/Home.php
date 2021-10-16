@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <base href="http://viduhaytronglaptrinh.tat/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tilte"> <?php echo $this->title ?> </title>
-</head>
-<body>
-    <a href="Post/index">Chuyển sang Post</a>
-    đây là home view
-</body>
-</html>
+<?php require_once 'Views/includes/header.php' ?>
+
+đây là home wiew <br>
+<button id=btn-1>haha</button>
+
+<script>
+    $(document).ready(function(){
+        var btn = document.getElementById('btn-1');
+        btn.onclick = function(){
+            alert('Đã click');
+            window.location.href = "/Post/";
+        };
+    });
+</script>
+
+
+<?php require_once 'Views/includes/footer.php' ?>

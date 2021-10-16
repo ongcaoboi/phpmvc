@@ -43,7 +43,6 @@
 }
 
 .header__btn-account i {
-    padding-left: 1rem;
     font-size: 2rem;
 }
 .header__title {
@@ -100,6 +99,37 @@
     background-color: blanchedalmond;
     color: #e84118;
 }
+/* Xu ly muc tai khoan */
+.header__btn-account {
+    position: relative;
+}
+.header__btn-account:hover .header__account-menu {
+    display: block;
+}
+
+.header__account-menu {
+    width: 200px;
+    height: 120px;
+    background-color: var(--white-color);
+    position: absolute;
+    border-radius: 10px;
+    border: 1px solid #888888;
+    right: 0%;
+    top: 120%;
+    display: none;
+    animation: fadeIn ease-in 3s;
+}
+.header__account-menu::before {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: -20%;
+    content: "";
+    display: block;
+}
+
+
+
 .sbutton:hover {
     background-color: black;
     color: blanchedalmond;
@@ -109,7 +139,6 @@
 }
 .header__profile-img {
     border-radius: 1rem;
-    margin-right: 1rem;
 }
 .container {
 	display: flex;
@@ -195,10 +224,6 @@
     margin-top: 6.5rem;
 	margin-left: 15rem;
 	transition: 0.4s;
-}
-
-.container__main-content {
-    font-size: 10rem;
 }
 .acctive-nav {
 	margin-left: -20rem;
