@@ -1,7 +1,7 @@
 .header {
 	position: fixed;
 	min-height: 6.5rem;
-	max-height: 10rem;
+	max-height: 15rem;
 	background-color: black;
 	left: 0;
 	right: 0;
@@ -140,6 +140,7 @@
 .header__profile-img {
     border-radius: 1rem;
 }
+
 .container {
 	display: flex;
 	height: calc(100vh - 65rem);

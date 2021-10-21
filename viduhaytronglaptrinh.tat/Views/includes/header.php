@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <base href="http://viduhaytronglaptrinh.tat/" />
@@ -46,15 +45,33 @@
                             <img src="public/img/user-3.png" alt="profile_pic" class="header__profile-img">
                             <!-- <p>Tài khoản</p> -->
                             <!-- <i class="fa fa-caret-down"></i> -->
-                            <div class="header__account-menu">
-                                <button class="account__btn-info">
-                                    <span>Thông tin</span>
-                                </button>
-                                <button class="account__btn-logout">
-                                    <span>Đăng xuất</span>
-                                    <i class="fa fa-sign-out"></i>
-                                </button>
-                            </div>
+                            <?php
+                            //Kiểm tra xem có tồn tại user đang đăng nhập k
+                                if(isset($_SESSION['user'])){
+                                    // nếu có show menu chõ tài khoản  là ntn
+                                    echo '
+                                    <div class="header__account-menu">
+                                        <button class="account__btn-info">
+                                            <span>Thông tin</span>
+                                        </button>
+                                        <button class="account__btn-logout">
+                                            <a href="./Login/logout">Đăng xuất</a>
+                                            <i class="fa fa-sign-out"></i>
+                                        </button>
+                                    </div>';
+                                }else{
+                                    // nếu k thì ntn
+                                    echo 
+                                    '<div class="header__account-menu">
+                                        <button class="account__btn-info">
+                                            <a href="./Login">Đăng nhập</a>
+                                        </button>
+                                        <button class="account__btn-logout">
+                                            <a href="./Register">Đăng ký</a>
+                                            <i class="fa fa-sign-out"></i>
+                                        </button>
+                                    </div>';
+                                } ?>
                         </div>
                     </div>
                 </nav>

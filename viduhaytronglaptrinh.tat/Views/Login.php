@@ -24,14 +24,18 @@
                 return false;
             }
             $.ajax({
-                url: 'Login/CheckLogin',
-                type: 'POST',
-                data: {
+                // gửi dl đến sever thông qua ajax :)) gây lú cực 
+                // nó hỗ trợ gửi dữ liệu đến sever mà k cần load lại trang như dùng form Post trong php
+                url: 'Login/CheckLogin', // thay cho action trong form 
+                type: 'POST', // thay cho method
+                data: { // đây là mảng dữ liệu đc gửi đi
                     'username': user,
                     'password': pass
                 },
                 success: function(response){
+                    // hàm này hứng dữ liệu trả về , là cái json hồi nãy ấy
                     var rs = JSON.parse(response);
+                    console.log(rs);
                     alert(rs.messenger);
                     if(rs.position == "1"){
                         window.location.href = 'Home/';
