@@ -4,10 +4,10 @@
 
 class Login extends Controller {  
     function index(){
-        // if(isset($_SESSION['user'])){ // Kiểm tra tồn tại session user thì chuyển hướng tới trang chủ
-        //     header("location: /Home");
-        //     exit;
-        // }
+        if(isset($_SESSION['user'])){ // Kiểm tra tồn tại session user thì chuyển hướng tới trang chủ
+            header("location: /Home");
+            exit;
+        }
         //Gọi tới view đăng nhập
         $this->title = "Đăng nhập";
         $this->view("Login");
@@ -28,8 +28,8 @@ class Login extends Controller {
                 if($password == $result['user_password']){
                     $this->dataUser = array(
                         'id' => $result['id_user'],
-                        'name' => $result['user_name'],
-                        'displayName' => $result['user_display_name'],
+                        'name' => is_null($result['user_display_name'])?$result['user_name']:$result['user_display_name'],
+                        'img' => $result['user_image'],
                     );
                     
                     $model->disConnect();
@@ -50,20 +50,20 @@ class Login extends Controller {
             else{
                 echo json_encode(array(
                     'position' => '0',
-                    'messenger' => 'Tên đănh nhập không tồn tại'
+                    'messenger' => 'Tên đăng nhập không tồn tại'
                 ));
             }
         }
         else{
         echo json_encode(array(
                 'position' => '0',
-                'messenger' => 'không có dữ liệu gửi đi'
+                'messenger' => 'Đã có lỗi xảy ra!'
             ));
         }
     }
     function logout(){
         // huy các session 
-        session_destroy();
+        unset($_SESSION['user']);
         // chuyển hướng lại tới trang chủ
         header("location: /Home");
     }

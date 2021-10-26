@@ -24,7 +24,7 @@ class App {
                 unset($url[1]);
             }
         }
-        $this->params = isset($url)?$url:[];
+        $this->params = $url?array_values($url):[];
         call_user_func_array([$this->controller, $this->action], $this->params);
 
 
@@ -32,8 +32,8 @@ class App {
 
 
     function getUrl(){
-        if(isset($_GET['url'])){
-            return explode("/", trim($_GET['url']));
+        if(isset($_GET["url"]) ){
+            return explode("/", filter_var(trim($_GET["url"], "/")));
         }
     }
 }

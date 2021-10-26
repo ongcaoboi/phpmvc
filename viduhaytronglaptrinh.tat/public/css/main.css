@@ -1,7 +1,11 @@
+body {
+    background-color: #e6e5e3;
+}
 .header {
 	position: fixed;
-	min-height: 6.5rem;
-	max-height: 15rem;
+	height: 6.5rem;
+	/* min-height: 6.5rem;
+	max-height: 15rem; */
 	background-color: black;
 	left: 0;
 	right: 0;
@@ -10,8 +14,10 @@
 }
 .header__navbar {
 	display: flex;
+    flex-wrap: wrap;
 	/* position: relative; */
 	justify-content: space-between;
+
 	align-items: center;
 }
 .header_navbar-list {
@@ -46,7 +52,7 @@
     font-size: 2rem;
 }
 .header__title {
-	margin-left: 6rem;
+	margin-left: 1rem;
 	font-size: 3rem;
 	color: var(--white-color);
 	text-decoration: none;
@@ -108,16 +114,23 @@
 }
 
 .header__account-menu {
-    width: 200px;
-    height: 120px;
-    background-color: var(--white-color);
+    width: 15rem;
+    height: 8rem;
+    background-color: #888888;
     position: absolute;
-    border-radius: 10px;
+    border-radius: 1px;
     border: 1px solid #888888;
     right: 0%;
     top: 120%;
     display: none;
+    justify-content: center;
     animation: fadeIn ease-in 3s;
+}
+.header__account-menu button {
+    margin: 1%;
+    width: 98%;
+    height: 46%;
+    border-radius: 1px;
 }
 .header__account-menu::before {
     position: absolute;
@@ -138,7 +151,7 @@
 	width: 2rem;
 }
 .header__profile-img {
-    border-radius: 1rem;
+    border-radius: 100%;
 }
 
 .container {
@@ -161,7 +174,7 @@
 .container__sidebar-profile {
 	display: block;
 	align-items: center;
-	height: 20rem;
+	height: 18rem;
 	background-color: #2d3238;
 	color: #fff;
 }
@@ -173,11 +186,27 @@
 	font-size: 2rem;
 	text-decoration: none;
 }
+.container__sidebar-info1 {
+	margin: 1rem;
+	color: #eaecee;
+	font-weight: bold;
+	padding-top: 10px;
+	font-size: 1.6rem;
+    display: block;
+    align-items: center;
+}
+.container__sidebar-info1 button {
+    width: 100%;
+    height: 5rem;
+}
+
+
 .sidebar__profile-img {
-	padding-top: 1.5rem;
+	margin-top: 1.5rem;
 	margin-left: 1.5rem;
-    border-radius: 10rem;
+    width: 10rem;
 	height: 10rem;
+    border-radius: 100%;
 }
 .container__sidebar-list p {
 	font-size: 2rem;
@@ -213,6 +242,10 @@
 	border-left: 5px solid #b93632;
 	color: #b93632;
 }
+.active-menu {
+	border-left: 5px solid #b93632;
+}
+
 /* .header__navbar--separate::after {
     content: "";
     display: block;
@@ -224,6 +257,7 @@
     /* position: absolute; */
     margin-top: 6.5rem;
 	margin-left: 15rem;
+    
 	transition: 0.4s;
 }
 .acctive-nav {
@@ -233,6 +267,10 @@
 	margin-left: 0rem;
 }
 
+.container__main-content {
+    margin: 1rem;
+    margin-bottom: 6rem;
+}
 
 
 
@@ -242,7 +280,7 @@ footer{
     bottom: 0;
     width: 100%;
     height: auto;
-    padding: 50px 100px;
+    padding: 5rem 10rem;
     background: #111;
     display: flex;
     justify-content: space-between;
@@ -259,10 +297,11 @@ footer .footer__container .noi-dung{
     margin-right: 30px;
 }
 footer  .footer__container .noi-dung.about{
-    width:40%;
+    width:30%;
 }
 footer .footer__container .noi-dung.about h2{
     position: relative;
+    width: 100%;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
@@ -362,7 +401,7 @@ footer .footer__container .noi-dung.about p{
     background: #f00;
 }
 .contact{
-    width: calc(35% - 60px);
+    width: calc(45% - 60px);
     margin-right: 0 !important;
 }
 .contact .info{
@@ -415,9 +454,17 @@ footer .footer__container .noi-dung.about p{
     background: #f00;
     box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
 }
+.form {
+    display: flex;
+}
+.form button {
+    height: 100%;
+    margin-top: 0;
+}
 .form__field {
     width: 90%;
     background: #fff;
+    margin-right: 1rem;
     color: #a3a3a3;
     font: inherit;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
@@ -425,7 +472,34 @@ footer .footer__container .noi-dung.about p{
     outline: 0;
     padding: 8px 4px;
 }
-
+.btn--success {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+.btn--success:hover {
+    background:green;
+}
+.btn--success:active {
+    background: green;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
+.btn--success {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+.btn--success:hover {
+    background:green;
+}
+.btn--success:active {
+    background: green;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
 @media  (max-width: 768px){
     footer{
         padding: 40px;
