@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="reset.css" />
+
+    <link href="public/fonts/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
+
+    <script src="script.js"></script>
+    <script src="thuvien.js"></script>
+
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="main.css" />
+    <title id="title">Tieu de</title>
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar">
+                    <div class="header__navbar-left">
+                        <button class="header__btn-menu" id="btn-menu">
+                            <i class="fas fa-bars f-9"></i>
+                        </button>
+                        <a href="" class="header__title">
+                            Ví dụ hay trong lập trình
+                        </a>
+                    </div>
+                    <div class="header__navbar-right">
+                        <div class="header__search">
+                            <input class="header__search-input" type="text" placeholder="Tìm kiếm">
+                                <button class="sbutton">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </input>
+                        </div>
+                        <div class="header__btn-account">
+                            <img src="public/img/user-3.png" alt="profile_pic" class="header__profile-img">
+                            <p>Tài khoản</p>
+                            <div class="header__account-menu">
+                                <a href="./Login">
+                                    <button class="btn btn--success">Đăng nhập
+                                    </button>
+                                </a>
+                                <a href="./Register">
+                                    <button class="btn btn--primary">Đăng ký
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="container">
+            <div class="container__sidebar">
+                <nav class="container__sidebar-menu">
+                    <div class="container__sidebar-profile">
+                        <div class="container__sidebar-info1">
+                            <a href="./Login">
+                                <button type="button" class="btn btn--success ">Đăng nhập</button>
+                            </a>
+                            <a href="./Register">
+                                <button type="button" class="btn btn--primary  ">Đăng ký</button>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="container__sidebar-list">
+                        <p class="container__sidebar-list"> Page</p>
+                        <li class="container__sidebar-item">
+                            <a href="./Home" id="nav-link1" class="container__sidebar-link">Trang chủ</a>
+                        </li>
+                        <li class="container__sidebar-item">
+                            <a href="./Post" id="nav-link2" class="container__sidebar-link">Bài viết</a>
+                        </li>
+                        <li class="container__sidebar-item">
+                            <a href="./Questions" id="nav-link3" class="container__sidebar-link">Câu hỏi</a>
+                        </li>
+                        <li class="container__sidebar-item">
+                            <a href="./About" id="nav-link4" class="container__sidebar-link">Thông tin</a>
+                        </li>
+                        <li class="container__sidebar-item">
+                            <a href="./Feedback" id="nav-link5" class="container__sidebar-link">Phản hồi</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="container__main">
+                <div class="container__main-content">
+  <!-- Viết tại đây-->
+
+                </div>
+                <footer class="footer">
+                
+                    <div class="footer__container">
+                        <div class="noi-dung about">
+                            <h2>Về Chúng Tôi</h2>
+                            <p>Kết nối với chúng tôi</p>
+                            <ul class="social-icon">
+                                <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                                <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="noi-dung links">
+                            <h2>Đường Dẫn</h2>
+                            <ul>
+                                <li><a href="./Home">Trang Chủ</a></li>
+                                <li><a href="./About">Về Chúng Tôi</a></li>
+                                <li><a href="./About">Dịch Vụ</a></li>
+                                <li><a href="./About">Điều Kiện Chính Sách</a></li>
+                            </ul>
+                        </div>
+                        <div class="noi-dung contact">
+                            <h2>Thông Tin Liên Hệ</h2>
+                            <ul class="info">
+                                <li>
+                                    <span><i class="fa fa-map-marker"></i></span>
+                                    <a href="https://goo.gl/maps/phM6HfxPaqHtfpUz5" target="_blank" title="Click để xem vị trí trên bản đồ">170 An Dương Vương, 
+                                        Nguyễn Văn Cừ, Tp.Quy Nhơn 
+                                        Bình Định, Việt Nam</a>
+                                </li>   
+                                <li>
+                                    <span><i class="fa fa-envelope"></i></span>
+                                    <p><a href="mailto: insertemailhere@xyz.com?subject=Mail from xyz.com" target="_blank">diachiemail@gmail.com</a></p>
+                                </li>
+                                <li>
+                                    <form class="form">
+                                        <input type="email" class="form__field" placeholder="Đăng kí ngay!" />
+                                        <button type="button" class="btn btn--primary  uppercase">Gửi</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+                </div>
+                </div>
+                </div>
+                </body>
+                
+                </html>

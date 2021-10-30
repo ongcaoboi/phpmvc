@@ -1,0 +1,518 @@
+body {
+    background-color: #e6e5e3;
+}
+.header {
+	position: fixed;
+	height: 6.5rem;
+	/* min-height: 6.5rem;
+	max-height: 15rem; */
+	background-color: black;
+	left: 0;
+	right: 0;
+    top:0;
+	box-shadow: 2px 2px #888888;
+}
+.header__navbar {
+	display: flex;
+    flex-wrap: wrap;
+	/* position: relative; */
+	justify-content: space-between;
+
+	align-items: center;
+}
+.header_navbar-list {
+	list-style: none;
+}
+.header__navbar-,
+.header__navbar-right {
+	margin: 1rem 1rem 0.5rem 1rem;
+	/* position: relative; */
+}
+.header__btn-menu {
+	/* position: absolute; */
+    color: white;
+    font-size: 2.5rem;
+    background-color: rgb(0, 0, 0, 0);
+	top: 0.5rem;
+	height: 45px;
+	width: 45px;
+}
+.header__btn-account,
+.header__btn-write {
+    color: white;
+    font-size: 1.6rem;
+    background-color: transparent;
+	border: 1px solid dimgrey;
+	border-radius: 3rem;
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.header__btn-account i {
+    font-size: 2rem;
+}
+.header__title {
+	margin-left: 1rem;
+	font-size: 3rem;
+	color: var(--white-color);
+	text-decoration: none;
+	font-weight: bold;
+}
+.header__search {
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 15px;
+	transition: 0.4s;
+	line-height: 40px;
+    width: 20rem;
+}
+.header__search-input {
+	background: #2f3640;
+	width: 15rem;
+	height: 4rem;
+	border-radius: 3rem;
+	transition: 0.4s;
+	color: #fff;
+	padding: 10px;
+}
+.sbutton {
+	color: #e84118;
+	float: right;
+    font-size: 2.2rem;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #dadada;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: 0.4s;
+}
+.header__navbar-right,
+.header__btn-account,
+.header__search,
+.header__btn-write {
+	display: inline-flex;
+}
+.header__btn-menu:hover,
+.header__btn-account:hover,
+.header__btn-write:hover {
+    background-color: blanchedalmond;
+    color: #e84118;
+}
+/* Xu ly muc tai khoan */
+.header__btn-account {
+    position: relative;
+}
+.header__btn-account:hover .header__account-menu {
+    display: block;
+}
+
+.header__account-menu {
+    width: 15rem;
+    height: 8rem;
+    background-color: #888888;
+    position: absolute;
+    border-radius: 1px;
+    border: 1px solid #888888;
+    right: 0%;
+    top: 120%;
+    display: none;
+    justify-content: center;
+    animation: fadeIn ease-in 3s;
+}
+.header__account-menu button {
+    margin: 1%;
+    width: 98%;
+    height: 46%;
+    border-radius: 1px;
+}
+.header__account-menu::before {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: -20%;
+    content: "";
+    display: block;
+}
+
+
+
+.sbutton:hover {
+    background-color: black;
+    color: blanchedalmond;
+}
+.header__btn-account img {
+	width: 2rem;
+}
+.header__profile-img {
+    border-radius: 100%;
+}
+
+.container {
+	display: flex;
+	height: calc(100vh - 65rem);
+	/* position: relative; */
+	font-size: 1.6rem;
+	top: 6.5rem;
+}
+.container__sidebar {
+	background-color: #343a40;
+	color: var(--white-color);
+	width: 15rem;
+	position: fixed;
+	top: 6.5rem;
+	bottom: 0;
+	box-shadow: 2px 2px #888888;
+	transition: 0.4s;
+}
+.container__sidebar-profile {
+	display: block;
+	align-items: center;
+	height: 18rem;
+	background-color: #2d3238;
+	color: #fff;
+}
+.container__sidebar-info {
+	margin: 1rem;
+	color: #eaecee;
+	font-weight: bold;
+	padding-top: 10px;
+	font-size: 2rem;
+	text-decoration: none;
+}
+.container__sidebar-info1 {
+	margin: 1rem;
+	color: #eaecee;
+	font-weight: bold;
+	padding-top: 10px;
+	font-size: 1.6rem;
+    display: block;
+    align-items: center;
+}
+.container__sidebar-info1 button {
+    width: 100%;
+    height: 5rem;
+}
+
+
+.sidebar__profile-img {
+	margin-top: 1.5rem;
+	margin-left: 1.5rem;
+    width: 10rem;
+	height: 10rem;
+    border-radius: 100%;
+}
+.container__sidebar-list p {
+	font-size: 2rem;
+	color: #b93632;
+	margin: 1rem;
+	font-weight: bold;
+}
+.container__sidebar-item a {
+	display: block;
+	font-weight: bold;
+	font-size: 2.2rem;
+	border-bottom: 1px solid dimgrey;
+	border-top: 1px solid dimgrey;
+	padding-top: 1rem;
+	padding-left: 2rem;
+	height: 5rem;
+}
+.container__sidebar-link {
+	position: relative;
+	top: 1.2rem;
+	color: #eaecee;
+	text-decoration: none;
+}
+/* .container__sidebar-item:active,
+.container__sidebar-item:focus,
+.container__sidebar-item:hover {
+    border-left: 1rem solid #b93632;
+    color: #004D40;
+    margin-left: 20px;
+} */
+.container__sidebar-link:active ,
+.container__sidebar-link:hover {
+	border-left: 5px solid #b93632;
+	color: #b93632;
+}
+.active-menu {
+	border-left: 5px solid #b93632;
+}
+
+/* .header__navbar--separate::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 1px solid red;
+} */
+
+.container__main {
+    /* position: absolute; */
+    margin-top: 6.5rem;
+	margin-left: 15rem;
+    
+	transition: 0.4s;
+}
+.acctive-nav {
+	margin-left: -20rem;
+}
+.acctive-main {
+	margin-left: 0rem;
+}
+
+.container__main-content {
+    margin: 1rem;
+    margin-bottom: 6rem;
+}
+
+
+
+
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 5rem 10rem;
+    background: #111;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer .footer__container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+/*Thiết Lập Cho Thành Phần Nội Dung Giới Thiệu*/
+footer .footer__container .noi-dung{
+    margin-right: 30px;
+}
+footer  .footer__container .noi-dung.about{
+    width:30%;
+}
+footer .footer__container .noi-dung.about h2{
+    position: relative;
+    width: 100%;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+footer .footer__container .noi-dung.about h2:before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 95px;
+    height: 2px;
+    background: #f00;
+}
+footer .footer__container .noi-dung.about p{
+    color: #999;
+}
+/*Thiết Lập Cho Thành Phần Icon Mạng Xã Hội*/
+.social-icon{
+    margin-top: 20px;
+    display: flex;
+}
+.social-icon li {
+    list-style: none;
+}
+.social-icon li a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.fab {
+    color: blanchedalmond;
+}
+.social-icon li a:hover{
+    background: #f00;
+}
+.social-icon li a .fa{
+    color: #fff;
+    font-size: 20px;
+}
+.links h2{
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.links h2{
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.links h2::before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: #f00;
+}
+.links{
+   position: relative;
+   width: 25%;
+}
+.links ul li{
+    list-style: none;
+}
+.links ul li a{
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.links ul li a:hover{
+    color: #fff;
+}
+.contact h2{
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.contact h2::before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 130px;
+    height: 2px;
+    background: #f00;
+}
+.contact{
+    width: calc(45% - 60px);
+    margin-right: 0 !important;
+}
+.contact .info{
+    position: relative;
+}
+.contact .info li{
+    display: inline-flex;
+    margin-bottom: 16px;
+}
+.contact .info li span:nth-child(1) {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.contact .info li button {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.contact .info li span{
+    color: #999;
+}
+.contact .info li a{
+    color: #999;
+    text-decoration: none;
+}
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin-top:16px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.btn--primary {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+.btn--primary:hover {
+    background: #f00;
+}
+.btn--primary:active {
+    background: #f00;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
+.form {
+    display: flex;
+}
+.form button {
+    height: 100%;
+    margin-top: 0;
+}
+.form__field {
+    width: 90%;
+    background: #fff;
+    margin-right: 1rem;
+    color: #a3a3a3;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    border: 0;
+    outline: 0;
+    padding: 8px 4px;
+}
+.btn--success {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+.btn--success:hover {
+    background:green;
+}
+.btn--success:active {
+    background: green;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
+.btn--success {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+.btn--success:hover {
+    background:green;
+}
+.btn--success:active {
+    background: green;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
+@media  (max-width: 768px){
+    footer{
+        padding: 40px;
+             }
+    footer .footer__container{
+        flex-direction: column;
+    }
+    footer .footer__container .noi-dung{
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+    footer .footer__container, .noi-dung.about, .links, .contact{
+        width: 100%;
+    }
+}
+

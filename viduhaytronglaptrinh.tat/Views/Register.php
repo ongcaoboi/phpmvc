@@ -11,6 +11,7 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="public/js/thuvien.js"></script>
+    <link rel="stylesheet" href="public/css/pageLoad.css" />
 </head>
 <body>
     <section>
@@ -43,7 +44,7 @@
                         <input type="password" id="re-pass">
                     </div>
                     <div class="dieu-khoan">
-                        <label><input type="checkbox" id="chapNhanDK"> Chấp nhận <a href="#">Điều khoản</a> và xử dụng dịch vụ!</label>
+                        <label><input type="checkbox" id="chapNhanDK"> Chấp nhận <a href="#">Điều khoản</a> và sử dụng dịch vụ!</label>
                     </div>
                     <div class="input-form">
                         <input type="button" value="Đăng Ký Ngay!" id="dangKy">
@@ -59,6 +60,10 @@
         </div>
         <!--Kết Thúc Phần Nội Dung-->
     </section>
+        <div id="load-page" class="load__page">
+            <div id="ring" class="ring"></div>
+            <div id="show__messenger" class="show__messenger"></div>
+        </div>
 </body>
 
 <script type="text/javascript">
@@ -67,10 +72,24 @@
     $(document).ready(function(){
 // load hết r mới gọi vô trong này
         $("#dangKy").on("click", function(){
+        
+            
+            // var loadPage = document.querySelector("#load-page");
+            // loadPage.classList.toggle("load_page-show");
+
+            // var ring = document.querySelector("#ring");
+            // var messenger = document.querySelector("#show__messenger");
+            // ring.classList.toggle("load_page-hide");
+            // messenger.classList.toggle("load_page-show");
+            // return;
 
             var name = $("#name").val(); // lấy giá trị của thẻ có id là name
             if(name == ""){
                 $("#thongBao").html("Tên không được để trống");
+                return;
+            }
+            if(findVietnamese(name)){
+                $("#thongBao").html("Tên không được có dấu hoặc khoảng trắng");
                 return;
             }
             var email = $("#email").val();
@@ -101,6 +120,8 @@
             //     return;
             // }
             
+            var loadPage = document.querySelector("#load-page");
+            loadPage.classList.toggle("load_page-show");
             $.ajax({
                 url: './Register/checkRegister',
                 type: 'post',
@@ -110,11 +131,25 @@
                     'pass': pass
                 },
                 success: function(response){
+                    
                     var rs = JSON.parse(response);
-                    alert(rs.messenger);
-                    if(rs.position == "1"){
-                        window.location.href = './Register/accountWaiting/'+name;
+                    
+                    if(rs.position == "0"){
+                        alert(rs.messenger);
+                        loadPage.classList.toggle("load_page-show");
                     }
+                    else if(rs.position == "1") {
+                        var ring = document.querySelector("#ring");
+                        var messenger = document.querySelector("#show__messenger");
+                        console.log(rs.messenger);
+
+                        messenger.innerHTML = rs.messenger;
+
+                        ring.classList.toggle("load_page-hide");
+                        messenger.classList.toggle("load_page-show");
+
+                    }
+                    
                 }
             });
             

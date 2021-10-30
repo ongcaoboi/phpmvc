@@ -3,6 +3,7 @@ $(document).ready(function() {
     var containerSidebar = document.querySelector(".container__sidebar");
     var containerMain = document.querySelector(".container__main");
     btnMenu.addEventListener("click", function() {
+        console.log("abc");
         containerSidebar.classList.toggle("acctive-nav");
         containerMain.classList.toggle("acctive-main");
     });

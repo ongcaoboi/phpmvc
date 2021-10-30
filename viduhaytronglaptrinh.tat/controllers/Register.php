@@ -11,19 +11,37 @@ class Register extends Controller {
     }
     function checkRegister(){
         if(isset($_POST['user']) && isset($_POST['email']) && isset($_POST['pass'])){
-            $result = $this->model("RegisterModel")->checkUser($_POST['user']);
+            $user = $_POST['user'];
+            $email = $_POST['email'];
+            $pass = md5($_POST['pass']);
+            $result = $this->model("RegisterModel")->checkUser($user);
             if($result['sl'] >= 1){
                 echo json_encode(array(
                     'position' => '0',
-                    'messenger' => 'Tên đăng nhập đã tồn tại, vui lòng chọn tên khác'
+                    'messenger' => 'Tên người dùng đã tồn tại, vui lòng chọn tên khác'
                 ));
             }else{
-                $_SESSION[$_POST['user']] = rand_string(10);
-                $this->guiMailXacThuc($_POST['user'],$_POST['email'], $_SESSION[$_POST['user']]);
-                echo json_encode(array(
-                    'position' => '1',
-                    'messenger' => 'Đăng Ký thành công, vui lòng kiểm tra email xác thực!'
-                ));
+                if($this->model("RegisterModel")->checkTKCho($user)['sl']>=1){
+                    echo json_encode(array(
+                        'position' => '0',
+                        'messenger' => 'Tài khoản '.$user.' đang được chờ xác thực!'
+                    ));
+                }else{
+                    $ma = rand_string(10);
+                    if($this->model("RegisterModel")->createTKCho($user,$ma, $email, $pass)){
+                        $this->guiMailXacThuc($user,$email,$ma);
+                        echo json_encode(array(
+                            'position' => '1',
+                            'messenger' => 'Đăng Ký tài khoản '.$user.' thành công, vui lòng kiểm tra email xác thực!'
+                        ));
+                    }
+                    else {
+                        echo json_encode(array(
+                            'position' => '0',
+                            'messenger' => 'Lỗi hệ thống, vui lòng thử lại!'
+                        ));
+                    }
+                }
             }
             // echo detailArr($result);
         }else{
@@ -33,26 +51,26 @@ class Register extends Controller {
                 ));
             }
     }
-    function accountWaiting($name = null){
-        if(isset($_SESSION[$name])){
-            echo 'Thông tin xác thực tài khoản '.$name.' đã gửi tới email email của bạn!<br>Nếu quá 10 phút không có email gửi về hãy liên hệ 0123456789 để báo lỗi!';
-        }else{
-            header('Location: /Home');
-        }
-    }
-    function xacThucTK($name= null, $params = null){
-        if(isset($_SESSION[$name]) && $params == $_SESSION[$name]){
-            unset($_SESSION[$name]);
-            echo '<p>đã xác thực tài khoản thành công<p>
+    function xacThucTK($name= null, $param = null){
+
+        $result = $this->model("RegisterModel")->checkTKChoVoiMa($name, $param);
+        if(!empty($result) && $result['name']==$name && $result['ma']==$param){
+            if($this->model("RegisterModel")->createUser($result['name'],$result['email'],$result['pass'])){
+                $this->model("RegisterModel")->deleteTKCho($name);
+                echo '<p>đã xác thực tài khoản thành công<p>
             <p><a href="/Login">Bấm vào đây để đăng nhập</a><p><br>';
+            }else{
+                $this->view('PageError');
+            }
         }else{
-            header('Location: /Login');
+            $this->view('PageError');
         }
     }
-    function guiMailXacThuc($tenTk, $mailNguoiNhan, $maXacNhan){   
+    function guiMailXacThuc($tenTk, $mailNguoiNhan, $maXacNhan){
+            
         require "PHPMailer-master/src/PHPMailer.php"; 
         require "PHPMailer-master/src/SMTP.php"; 
-        require 'PHPMailer-master/src/Exception.php'; 
+        require 'PHPMailer-master/src/Exception.php';
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
         try {
             $mail->SMTPDebug = 0; //0,1,2: chế độ debug. khi chạy ngon thì chỉnh lại 0 nhé

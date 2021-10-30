@@ -69,7 +69,7 @@
         $('#Login-submit').on("click", function(){
             var user = $('#user').val();
             var pass = $('#pass').val();
-
+            var saveLogin = $('#saveLogin').prop('checked');
 
             if(user == ""){
                 $("#error").html("<b>Tên tài khoản không được để trống</b>");
@@ -86,7 +86,8 @@
                 type: 'POST', // thay cho method
                 data: { // đây là mảng dữ liệu đc gửi đi
                     'username': user,
-                    'password': pass
+                    'password': pass,
+                    'saveLogin': saveLogin
                 },
                 success: function(response){
                     // hàm này hứng dữ liệu trả về , là cái json hồi nãy ấy
