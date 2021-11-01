@@ -10,9 +10,9 @@ define('DOMAIN', 'http://viduhaytronglaptrinh.tat/');
 // định nghĩa các hàm cần thiết cho quá trình dev
 function detailArr($result){
     // hàm này dùng để in mảng ra để test kết quả
-    echo "<pre?>".print_r($result)."</pre>";
+    echo "<pre>".print_r($result)."</pre>";
     echo "<br>";
-    echo "<pre?>".var_dump($result)."</pre>";
+    echo "<pre>".var_dump($result)."</pre>";
 }
 function rand_string( $length ) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

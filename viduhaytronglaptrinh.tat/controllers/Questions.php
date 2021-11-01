@@ -5,11 +5,17 @@ class Questions extends Controller {
         $this->title = "Câu hỏi";
         $this->view("Questions");
     }
-    function getAllQuestion(){
+    function getAllQuestions(){
         $model = $this->model('QuestionModel');
-        $result = $model->getAllQuestion();
+        $result = $model->getAllQuestions();
         $model->disConnect();
-        echo detailArr($result);
+        echo json_encode($result);
+        detailArr($result);
+    }
+    function getQuestion($id){
+        $model = $this->model('QuestionModel');
+        $result = $model->getQuestion($id);
+        echo json_encode($result);
     }
 }
 

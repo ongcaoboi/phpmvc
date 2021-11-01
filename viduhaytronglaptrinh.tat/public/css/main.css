@@ -11,10 +11,12 @@ body {
 	right: 0;
     top:0;
 	box-shadow: 2px 2px #888888;
+    z-index: 1;
 }
 .header__navbar {
 	display: flex;
     flex-wrap: wrap;
+    position: relative;
 	/* position: relative; */
 	justify-content: space-between;
 
@@ -28,7 +30,11 @@ body {
 	margin: 1rem 1rem 0.5rem 1rem;
 	/* position: relative; */
 }
-.header__btn-menu {
+.header__navbar-left {
+    display: flex;
+    align-items: center;
+}
+.header__btn-menu{
 	/* position: absolute; */
     color: white;
     font-size: 2.5rem;
@@ -36,7 +42,130 @@ body {
 	top: 0.5rem;
 	height: 45px;
 	width: 45px;
+    margin-top: 0;
 }
+
+/* bắt đầu phần mobile */
+
+.header__btn-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    padding: 5px;
+    background-color: #2d3238;
+    color: #e6e5e3;
+    font-size: 2.5rem;
+}
+#check {
+    display: none;
+}
+.check-mobile:checked ~ .container__sidebar-mobile{
+    display: block;
+    transform: translateX(0%);
+}
+.container__sidebar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    background-color: #343a40;
+    animation: fadeIn ;
+}
+.sidebar__profile-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sidebar__profile-mobile h3 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 20px;
+    margin-left: 10px;
+}
+.profile_img-mobile img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+.profile-mobile {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+.profile-mobile div {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn-close-mobile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-size: 2.5rem;
+    margin: 25px;
+}
+
+.btn-search__mobile {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 100%;
+    background-color: #dadada;
+    color: #333;
+    font-size: 2.5rem;
+    display: none;
+}
+.btn-search__mobile i {
+    padding: 7px;
+}
+.search-input__mobile {
+    position: absolute;
+    top: 6.5em;
+    width: 100%;
+    height: 40px;
+    border: 1px solid slategray;
+    background-color: silver;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+.input__mobile {
+    margin: 5px 2%;
+    width: 70%;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+.input__btn {
+    width: 20%;
+    margin: 5px 2%;
+    background-color: #222;
+    color: #fff;
+    font-size: 1.8rem;
+}
+.lopphu {
+    position: fixed;
+    top: calc(6.5rem + 40px);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .2);
+}
+#check-search {
+    display: none;
+}
+#check-search:checked ~ .search-input__mobile {
+    display: block;
+}
+/* kết thúc moblie */
+
+
 .header__btn-account,
 .header__btn-write {
     color: white;
@@ -178,6 +307,11 @@ body {
 	background-color: #2d3238;
 	color: #fff;
 }
+.container__sidebar-mobile .container__sidebar-menu .header__title {
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
 .container__sidebar-info {
 	margin: 1rem;
 	color: #eaecee;
@@ -188,6 +322,7 @@ body {
 }
 .container__sidebar-info1 {
 	margin: 1rem;
+    margin-top: 35px;
 	color: #eaecee;
 	font-weight: bold;
 	padding-top: 10px;
@@ -257,7 +392,8 @@ body {
     /* position: absolute; */
     margin-top: 6.5rem;
 	margin-left: 15rem;
-    
+    box-sizing: inherit;
+    height: auto;
 	transition: 0.4s;
 }
 .acctive-nav {
@@ -268,8 +404,7 @@ body {
 }
 
 .container__main-content {
-    margin: 1rem;
-    margin-bottom: 6rem;
+    /* margin-bottom: 6rem; */
 }
 
 
@@ -486,18 +621,18 @@ footer .footer__container .noi-dung.about p{
     background: green;
     box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
 }
-.btn--success {
-    background: #222;
+.btn--success-1 {
+    background: #530AD4;
     color: #fff;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
     border-radius: 2px;
     padding: 8px 24px;
 }
-.btn--success:hover {
-    background:green;
+.btn--success-1:hover {
+    background:#3c89ef;
 }
-.btn--success:active {
-    background: green;
+.btn--success-1:active {
+    background: #3c89ef;
     box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
 }
 @media  (max-width: 768px){
@@ -514,5 +649,40 @@ footer .footer__container .noi-dung.about p{
     footer .footer__container, .noi-dung.about, .links, .contact{
         width: 100%;
     }
+    .container__sidebar {
+        margin-left: -20rem;
+        background-color: crimson;
+    }
+    .container__main {
+        margin-left: 0;
+    }
+    .header__search {
+        display: none;
+    }
+    .header__navbar-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .btn-search__mobile {
+        display: block;
+    }
+    .header__navbar-left {
+        display: none;
+    }
+    .header__navbar-left {
+        margin-top: 15px;
+    }
+    .header__btn-mobile {
+        display: block;
+    }
+    
 }
-
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: silver;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 5px;
+}
