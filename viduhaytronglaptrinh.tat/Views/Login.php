@@ -87,7 +87,7 @@
                 data: { // đây là mảng dữ liệu đc gửi đi
                     'username': user,
                     'password': pass,
-                    'saveLogin': saveLogin
+                    'saveLogin': saveLogin  
                 },
                 success: function(response){
                     // hàm này hứng dữ liệu trả về , là cái json hồi nãy ấy
