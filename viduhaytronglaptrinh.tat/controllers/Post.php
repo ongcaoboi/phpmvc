@@ -5,6 +5,10 @@ class Post extends Controller {
         $this->title = "Bài viết";
         $this->view("Post");
     }
+    function getPost() {
+        $this->title = "Bài viết";
+        $this->view("PostDetail");
+    }
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php require_once 'Views/includes/header.php' ?>
-<link rel="stylesheet" href="public/css/post.css">
+<link rel="stylesheet" href="public/css/post.css" />
+<script src="public/js/post.js"></script>
 
 <div class="post">
   <div class="post__header">
@@ -35,7 +36,7 @@
             </a>
             <div class="media-body">
               <a href="" class="user">
-                Helo
+                Hello
               </a>
               <a href="" class="post">
                 <div class="title">
@@ -45,9 +46,22 @@
                 <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae soluta quos illum, reiciendis cupiditate ipsa molestias quae rerum quod? Velit possimus expedita facere, reprehenderit excepturi alias et dignissimos illum rem?</p>
               </a>
               <div class="status">
-                <p class="status-list">like</p>
-                <p class="status-list">bình luận</p>
-                <p class="status-list">lượt xem</p>
+                <div class="status-list">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>10</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-comments"></i>
+                  <p>2</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-eye"></i>
+                  <p>10.000</p>
+                </div>
+                <div class="status-list">
+                  <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
+                  <p>8 giờ trước</p>
+                </div>
               </div>
             </div>
           </div>
@@ -66,9 +80,22 @@
                 <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae soluta quos illum, reiciendis cupiditate ipsa molestias quae rerum quod? Velit possimus expedita facere, reprehenderit excepturi alias et dignissimos illum rem?</p>
               </a>
               <div class="status">
-                <p class="status-list">like</p>
-                <p class="status-list">bình luận</p>
-                <p class="status-list">lượt xem</p>
+                <div class="status-list">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>10</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-comments"></i>
+                  <p>2</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-eye"></i>
+                  <p>10.000</p>
+                </div>
+                <div class="status-list">
+                  <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
+                  <p>8 giờ trước</p>
+                </div>
               </div>
             </div>
           </div>
@@ -110,49 +137,60 @@
         <div class="questions-list">
           <a href="" class="questions-list__items">
             <h3>Đây là tên</h3>
-            <div class="status">
-              <p class="status-list">like</p>
-              <p class="status-list">bình luận</p>
-              <p class="status-list">lượt xem</p>
-            </div>
+              <div class="status">
+                <div class="status-list">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>10</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-comments"></i>
+                  <p>2</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-eye"></i>
+                  <p>10.000</p>
+                </div>
+              </div>
           </a>
           
           <a href="" class="questions-list__items">
             <h3>Đây là tên</h3>
-            <div class="status">
-              <p class="status-list">like</p>
-              <p class="status-list">bình luận</p>
-              <p class="status-list">lượt xem</p>
-            </div>
+              <div class="status">
+                <div class="status-list">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>10</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-comments"></i>
+                  <p>2</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-eye"></i>
+                  <p>10.000</p>
+                </div>
+              </div>
           </a>
           <a href="" class="questions-list__items">
             <h3>Đây là tên</h3>
-            <div class="status">
-              <p class="status-list">like</p>
-              <p class="status-list">bình luận</p>
-              <p class="status-list">lượt xem</p>
-            </div>
+              <div class="status">
+                <div class="status-list">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>10</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-comments"></i>
+                  <p>2</p>
+                </div>
+                <div class="status-list">
+                  <i class="far fa-eye"></i>
+                  <p>10.000</p>
+                </div>
+              </div>
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- 
-<script>
-  $(document).ready(function(){
-    $.ajax({
-      url: 'Questions/getAllQuestions',
-      type: 'POST',
-      data: null,
-      success: function(response){
-
-        $('#listPost').html(response);
-        console.log('Thành công');
-      }
-
-    });
-  });
-</script> -->
 
 <?php require_once 'Views/includes/footer.php' ?>

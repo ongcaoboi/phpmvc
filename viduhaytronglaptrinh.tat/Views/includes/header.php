@@ -37,7 +37,7 @@
                             <i class="fas fa-bars f-9"></i>
                         </button>
                         <a href="" class="header__title">
-                            Ví dụ hay trong lập trình
+                            Code <p>EX</p>
                         </a>
                     </div>
                     <div class="header__navbar-right">
@@ -115,8 +115,9 @@
                             if(isset($_SESSION['user'])){
                                 $user_img = is_null($_SESSION['user']['img'])?"public/img/user-3.png":$_SESSION['user']['img'];
                                 echo '
-                            <div class="sidebar__profile-mobile">
-                                <h3>Ví dụ hay trong lập trình</h3>
+                                <a href="" class="header__title">
+                                    Code <p>EX</p>
+                                </a>
                                 <div class="profile-mobile">
                                     <div class="profile_img-mobile">
                                         <img src="'.$user_img.'" alt="profile_pic"/>
@@ -125,13 +126,12 @@
                                         <a href="" class="container__sidebar-info">'.$_SESSION['user']['name'].'</a>
                                     </div>
                                 </div>
-                            </div>
                             
                                 ';
                             }else{
                                 echo '
                                 <a href="" class="header__title">
-                                    Ví dụ hay trong lập trình
+                                    Code <p>EX</p>
                                 </a>
                             <div class="container__sidebar-profile">
                                 <div class="container__sidebar-info1">
@@ -149,19 +149,19 @@
                             <ul class="container__sidebar-list">
                                 <p class="container__sidebar-list"> Page</p>
                                 <li class="container__sidebar-item">
-                                    <a href="./Home" id="nav-link1" class="container__sidebar-link">Trang chủ</a>
+                                    <a href="./Home" id="nav-link_1" class="container__sidebar-link">Trang chủ</a>
                                 </li>
                                 <li class="container__sidebar-item">
-                                    <a href="./Post" id="nav-link2" class="container__sidebar-link">Bài viết</a>
+                                    <a href="./Post" id="nav-link_2" class="container__sidebar-link">Bài viết</a>
                                 </li>
                                 <li class="container__sidebar-item">
-                                    <a href="./Questions" id="nav-link3" class="container__sidebar-link">Câu hỏi</a>
+                                    <a href="./Questions" id="nav-link_3" class="container__sidebar-link">Câu hỏi</a>
                                 </li>
                                 <li class="container__sidebar-item">
-                                    <a href="./About" id="nav-link4" class="container__sidebar-link">Thông tin</a>
+                                    <a href="./About" id="nav-link_4" class="container__sidebar-link">Thông tin</a>
                                 </li>
                                 <li class="container__sidebar-item">
-                                    <a href="./Feedback" id="nav-link5" class="container__sidebar-link">Phản hồi</a>
+                                    <a href="./Feedback" id="nav-link_5" class="container__sidebar-link">Phản hồi</a>
                                 </li>
                             </ul>
                         </nav>

@@ -109,13 +109,26 @@ select {
 }
 .status {
   display: flex;
+  flex-wrap: wrap;
+  margin-top:5px;
 }
-.media .status .status-list {
-  margin-right: 5px;
-  
+.status-list {
+  display: flex;
   text-decoration: none;
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+.status-list p {
+  display: block;
+  margin-left: 4px;
 }
 
+.status-list img {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  margin-left: 4px;
+}
 
 
 /* Pages */
