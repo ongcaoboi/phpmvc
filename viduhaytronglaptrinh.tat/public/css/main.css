@@ -35,6 +35,8 @@ body {
     align-items: center;
 }
 .header__btn-menu{
+    cursor: pointer;
+    border: none;
 	/* position: absolute; */
     color: white;
     font-size: 2.5rem;
@@ -95,6 +97,8 @@ body {
 .btn-close-mobile {
     position: absolute;
     top: 0;
+    cursor: pointer;
+    z-index: 2;
     right: 0;
     color: #fff;
     font-size: 2.5rem;
@@ -118,7 +122,7 @@ body {
     position: absolute;
     top: 6.5em;
     width: 100%;
-    height: 50px;
+    height: 80px;
     border: 1px solid slategray;
     background-color: silver;
     display: flex;
@@ -126,23 +130,29 @@ body {
     display: none;
 }
 .input__mobile {
-    margin: 10px 2%;
+    background-color: #2f3640;
+    color: #fff;
+    padding: 0 20px;
+    margin: 17px 2%;
     width: 70%;
+    height: 45px;
     border-radius: 40px;
     font-weight: bold;
     font-size: 1.8rem;
 }
 .input__btn {
+    height: 45px;
     width: 20%;
-    margin: 10px 2%;
+    margin: 17px 2%;
     border-radius: 40px;
     background-color: #222;
     color: #fff;
     font-size: 1.8rem;
+    border: none;
 }
 .lopphu {
     position: fixed;
-    top: calc(6.5rem + 50px);
+    top: calc(6.5rem + 80px);
     left: 0;
     bottom: 0;
     right: 0;
@@ -203,21 +213,26 @@ body {
 }
 .header__search-input {
 	background: #2f3640;
+    border: none;
 	width: 15rem;
-	height: 4rem;
+	height: 3rem;
+    margin-top: 7px;
 	border-radius: 3rem;
 	transition: 0.4s;
 	color: #fff;
-	padding: 10px;
+	padding: 2px 15px;
 }
 .sbutton {
+    cursor: pointer;
+    margin-left: 5px;
 	color: #e84118;
 	float: right;
     font-size: 2.2rem;
 	width: 40px;
 	height: 40px;
+    border: none;
 	border-radius: 50%;
-	background: #dadada;
+	background: transparent;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -238,6 +253,8 @@ body {
 }
 /* Xu ly muc tai khoan */
 .header__btn-account {
+    cursor: pointer;
+    border: none;
     position: relative;
 }
 .header__btn-account:hover .header__account-menu {
@@ -245,12 +262,12 @@ body {
 }
 
 .header__account-menu {
+    border: none;
     width: 15rem;
     height: 8rem;
     background-color: #888888;
     position: absolute;
     border-radius: 1px;
-    border: 1px solid #888888;
     right: 0%;
     top: 120%;
     display: none;
@@ -272,15 +289,20 @@ body {
     display: block;
 }
 
-
-
 .sbutton:hover {
-    background-color: black;
-    color: blanchedalmond;
+    background-color: blanchedalmond;
+    color: #333;
 }
 .header__btn-account img {
+    padding: 0;
 	width: 2rem;
+    height: 2rem;
 }
+.header__btn-account p {
+    margin-top: 2px;
+    padding: 0 10px;
+}
+
 .header__profile-img {
     border-radius: 100%;
 }
@@ -310,6 +332,7 @@ body {
 	color: #fff;
 }
 .container__sidebar-mobile .container__sidebar-menu .header__title {
+    display: inline-flex;
     position: relative;
     top: 25px;
     margin: 10 auto;
@@ -320,15 +343,16 @@ body {
     margin: 0 auto;
 }
 .container__sidebar-info {
-	margin: 1rem;
+    margin-top: 15px;
 	color: #eaecee;
 	font-weight: bold;
 	padding-top: 10px;
 	font-size: 2rem;
 	text-decoration: none;
+    text-align: center;
 }
 .container__sidebar-info1 {
-	margin: 1rem;
+    padding: 0 10px;
     margin-top: 35px;
 	color: #eaecee;
 	font-weight: bold;
@@ -630,6 +654,8 @@ footer .footer__container .noi-dung.about p{
 }
 .btn--success-1 {
     background: #530AD4;
+    cursor: pointer;
+    border: none;
     color: #fff;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
     border-radius: 2px;

@@ -66,8 +66,7 @@ class Register extends Controller {
             $this->view('PageError');
         }
     }
-    function guiMailXacThuc($tenTk, $mailNguoiNhan, $maXacNhan){
-            
+    function guiMailXacThuc($tenTk = null, $mailNguoiNhan = null, $maXacNhan = null){
         require "PHPMailer-master/src/PHPMailer.php"; 
         require "PHPMailer-master/src/SMTP.php"; 
         require 'PHPMailer-master/src/Exception.php';
@@ -102,6 +101,7 @@ class Register extends Controller {
             // echo 'Đã gửi mail xong';
         } catch (Exception $e) {
             // echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
+            header("Location: /home");
         }
     }
 }

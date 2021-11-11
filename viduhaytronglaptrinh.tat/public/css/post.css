@@ -17,10 +17,15 @@
 
 .post__header--content {
   padding: 40px 0 40px 50px;
-
+}
+.post__header--content h1{
+  padding: 10px 0;
 }
 .post__btn {
-  padding: 40px 50px 40px 0;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 50px;
 }
 
 .post__content {
@@ -51,6 +56,8 @@
 }
 .post__list--menu ul li a{
   color: #575757;
+  display: block;
+  margin: 5px 0;
   box-sizing: unset;
   font-weight: bold;
   padding: 5px 10px;
@@ -65,6 +72,7 @@
 }
 select {
   background-color:  rgb(207, 207, 207);
+  cursor: pointer;
   border: none;
   font-size: 1.8rem;
   color: #b93632;
@@ -72,7 +80,7 @@ select {
 .content__list {
   border: 1px solid rgb(207, 207, 207);
   background-color: white;
-  margin: 2.5px 5px;
+  margin: 10px 5px;
 }
 .media {
   display: flex;
@@ -81,6 +89,7 @@ select {
 }
 .media-left {
   margin-right: 10px;
+  height: 50px;
 }
 .media a {
   color: #575757;
@@ -106,6 +115,13 @@ select {
 .media-body .user{
   font-weight: bold;
   color: rgb(12, 171, 219);
+}
+.content {
+  margin: 7px 0;
+  color: #575757;
+  overflow: hidden;
+  max-height: 72px;
+  text-overflow: ellipsis;
 }
 .status {
   display: flex;
@@ -136,12 +152,17 @@ select {
 .post__list-page {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  /* background-color: #c3c9c9; */
   margin: 5px;
+  margin-top: 20px;
 }
-.page-list a, .next-page a {
+.page-list a, .next-page a, .prev-page a {
   text-decoration: none;
   padding: 5px;
+}
+.pages-index_light {
+  background-color: khaki;
 }
 
 /* Slider */
@@ -165,12 +186,29 @@ select {
   display: flex;
   flex-direction: column;
 }
+.topic-list, .questions-list {
+  background-color: azure;
+  padding: 20px 20px;
+  margin: 20px 0 40px 0;
+}
 .questions-list__items, .topic-list__items {
   text-decoration: none;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  color:#575757;
 }
-
+.questions-list__items h3 {
+  font-weight: normal;
+  color: #b93632;
+}
 .topics__header {
   background-color: aquamarine;
+}
+
+@media  (max-width: 768px){ 
+  .post__list {
+    width: 100%;
+  }
+  .post__slider {
+    width: 100%;
+  }
 }

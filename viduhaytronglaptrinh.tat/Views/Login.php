@@ -20,9 +20,9 @@
             <!--<img src="thêm hình ảnh tại đây">-->
         </div>
         <!--Kết Thúc Phần Hình Ảnh-->
-        <!--Bắt Đầu Phần Nội Dung-->
+<!--Bắt Đầu Phần Nội Dung-->
         <div class="noi-dung">
-            <div class="form">
+<div class="form">
                 <h2>Trang Đăng Nhập</h2>
                 <div id="error" style="color: red;"></div>
                 <div>

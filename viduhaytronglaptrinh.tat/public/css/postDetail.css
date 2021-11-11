@@ -1,0 +1,150 @@
+.slider__user-post  {
+  text-align: center;
+}
+.slider__user-post  a {
+  display: block;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px;
+  margin-bottom: 0;
+}
+.slider__user-post .user-post__header {
+  background-color: aqua;
+  display: block;
+  margin: 0;
+}
+.slider__user-post .user-post__header img {
+  width: 100px;
+  margin: 10px auto;
+  border-radius: 100%;
+  border: 3px solid white;
+}
+.slider__user-post .user-post__info {
+  display: flex;
+  justify-content: space-around;
+}
+.slider__user-post .user-post__info div {
+  margin: 10px;
+}
+.slider__user-post .user-post__info div p {
+  margin: 10px;
+  font-weight: bold;
+}
+.post__list--menu {
+  display: flex;
+  flex-direction: column;
+}
+.post__list--menu h2 {
+  margin: 20px;
+}
+.post__list--menu .status {
+  margin: 0px 5px 10px;
+}
+.status__topic {
+  margin-bottom: 10px;
+}
+.status__topic a{
+  margin-left: 5px;
+  margin-top: -2.5px;
+  padding: 0 5px;
+  color: brown;
+  text-decoration: none;
+  border: 2px solid tan;
+}
+
+
+
+/* css bình luận */
+
+
+.content__list h3 {
+  margin: 10px;
+  
+}
+
+.your__comment {
+  display: flex;
+}
+.your__comment .comment__wirte {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  width: 100%;
+}
+.your__comment .your__comment-left {
+  margin-left: 10px;
+}
+.comment__wirte textarea {
+  width: calc(100% - 10px);
+  padding: 10px;
+  height: 80px;
+  font-size: 1.6rem;
+  color: #575757;
+  background-color: antiquewhite;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.comment__wirte button {
+  cursor: pointer;
+  padding: 5px;
+  width: 120px;
+  border-radius: 30px;
+  height: 35px;
+  align-items: center;
+  font-size: 1.5rem;
+  border: none;
+}
+
+
+.post__comment {
+  display: flex;
+  padding: 10px;
+  font-size: 1.8rem;
+}
+.post__comment-left {
+  margin-right: 10px;
+}
+.post__comment a {
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+}
+.post__comment a img , .your__comment div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.post__comment-body{
+  background-color: tan;
+  border-radius: 6px;
+  padding: 10px;
+}
+.post__comment-body .comment-body__user {
+  display: flex;
+  color: dodgerblue;
+}
+
+.comment-body__user p {
+  margin: 0;
+  padding-left: 5px;
+}
+.comment-body__content {
+  margin: 5px 0;
+}
+.comment__report {
+  display: flex;
+  justify-content: space-between;
+}
+.comment__report button {
+  color: #af1310;
+  border-radius: 30px;
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.comment__report button:hover {
+  background-color: sandybrown;
+}

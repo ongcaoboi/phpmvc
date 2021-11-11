@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 03, 2021 at 03:37 PM
+-- Generation Time: Nov 08, 2021 at 07:29 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `test_1_vd_hoc_lt`
@@ -25,6 +25,11 @@ DELIMITER $$
 --
 -- Procedures
 --
+DROP PROCEDURE IF EXISTS `getListPostByPage`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getListPostByPage` (IN `vtbd` INT, IN `sodong` INT)  BEGIN
+  select * from (select `id_post`, `post_title`, `post_content`, `post_date_created`, `post_views`, `id_user`, `user_name`, `user_display_name`, topic.`id_topic`, `topic_name`, `slComment`, `slLikes` from (select `id_post`, `id_topic`, `post_title`, `post_content`, `post_date_created`, `post_views`, `id_user`, `user_name`, `user_display_name`, `slComment`, COUNT(`id`) as `slLikes` from (select C.`id_post`, `id_topic`, `post_title`, `post_content`, `post_date_created`, `post_views`, C.`id_user`, `user_name`, `user_display_name`, `slComment`, likes.`id_post` as `id` from (select `id_post`, `id_topic`, `post_title`, `post_content`, `post_date_created`, `post_views`, `id_user`, `user_name`, `user_display_name`, COUNT(`id`) as `slComment` from (select  A.`id_post`, `id_topic`, `post_title`, `post_content`, `post_date_created`, `post_views`, A.`id_user`, `user_name`, `user_display_name`, comments.`id_post` as `id` from (select `id_post`, `id_topic`, `post_title`, `post_content`, `post_date_created`, `post_views`, post.`id_user`, `user_name`, `user_display_name`FROM post, userr WHERE post.`id_user` = userr.`id_user`) as A LEFT JOIN comments on A.`id_post` = comments.`id_post`) as B GROUP BY `id_post`) as C LEFT JOIN likes on C.`id_post` = likes.`id_post`) as D GROUP BY `id_post`) as E, topic WHERE E.`id_topic` = topic.`id_topic` ORDER By `id_post` DESC)as F LIMIT vtbd,sodong;
+  END$$
+
 DROP PROCEDURE IF EXISTS `getListQuestion`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getListQuestion` ()  BEGIN
 SELECT  `id_question` as `id`,`question_title` as `title`, `question_date_created` as `date`, `question_views` as `views`, `user_name` as `nameTK`, `user_display_name` as `displayName`, COUNT(`id`) as `slTraLoi`  from (SELECT  A.`id_question`, `question_title`, `question_date_created`, `question_views`, `user_name`, `user_display_name`, comments.`id_question` as `id`  from (SELECT question.`id_question`, `question_title`, `question_date_created`, `question_views`, userr.`user_name`, `user_display_name` FROM question, userr WHERE question.`id_user` = userr.`id_user`) as A LEFT JOIN comments on A.`id_question` = comments.`id_question`) as B GROUP BY `id_question` ORDER BY `id_question` DESC;
@@ -158,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `tkhoan_cho` (
   `email` varchar(100) NOT NULL,
   `pass` varchar(50) NOT NULL,
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tkhoan_cho`
