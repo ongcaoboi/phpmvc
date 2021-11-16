@@ -22,6 +22,9 @@ $(document).ready(function(){
       var a = document.getElementById('post_3');
       a.style.background = "white";
       break;
+      default:
+        var a = document.getElementById('post_1');
+        a.style.background = "white";
     } 
   } 
 

@@ -70,7 +70,8 @@
              $like = $arr[$i]['slLikes'];
              $comment = $arr[$i]['slComment'];
              $view = $arr[$i]['post_views'];
-             $time = $arr[$i]['post_date_created'];    
+             $time = $arr[$i]['post_date_created']; 
+             $linkDetalis = getLinkPostDetails($title.' '.$idPost);  
            // echo $name;
          echo '
          <div class="content__list">
@@ -82,12 +83,12 @@
                <a href="'.$idUser.'" class="user">
                  '.$name.'
                </a>
-               <a href="'.$idPost.'" class="post">
+               <a href="post/details/'.$linkDetalis.'" class="post">
                  <div class="title">
                    <h3>'.$title.'</h3>
                    <a href="'.$topic.'" class="topic">'.$topic.'</a>
                  </div>
-                 <a href="'.$idPost.'"><p class="content">'.$content.'</p></a>
+                 <a href="post/details/'.$linkDetalis.'"><p class="content">'.$content.'</p></a>
                </a>
                <div class="status">
                  <div class="status-list">

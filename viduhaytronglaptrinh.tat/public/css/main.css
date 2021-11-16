@@ -294,6 +294,7 @@ body {
     color: #333;
 }
 .header__btn-account img {
+    background-color: blanchedalmond;
     padding: 0;
 	width: 2rem;
     height: 2rem;
@@ -711,11 +712,11 @@ footer .footer__container .noi-dung.about p{
     }
     
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 5px;
     background-color: silver;
 }
 ::-webkit-scrollbar-thumb {
     background-color: #333;
     border-radius: 5px;
-}
+} */

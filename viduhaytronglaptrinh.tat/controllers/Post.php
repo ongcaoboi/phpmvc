@@ -8,9 +8,28 @@ class Post extends Controller {
         $this->page('news',1);
         
     }
-    function getPost() {
-        $this->title = "Bài viết";
+    function details($str = null) {
+        if(!is_string($str)){
+            $this->view('PageError');
+            die;
+        }
+        $str = explode("-", $str);
+        $idPost = $str[count($str)-1];
+        $model = $this->model("PostModel");
+        $result = $model->getPostDetails($idPost);
+        if(!is_array($result)){
+            $this->view('PageError');
+            $model->disConnect();
+            die;
+        }
+        $this->title = $result['post_title'];
+        // detailArr($result);
+        $this->dl['postDetails'] = $result;
+        $this->dl['infoUserPost'] = $this->model('PostModel')->getInfoUserPost($result['id_user']);
+        // detailArr($this->dl);
+        $model->disConnect();
         $this->view("PostDetail");
+        
     }
     function page($param = null, $page = null){
         if(!is_numeric($page)|| $page <= 0){
@@ -95,14 +114,72 @@ class Post extends Controller {
         $this->view('PostMe');
         
     }
-    function getPost1(){
-        $this->title = "Danh sách bài viết";
-        // $this->duLieu = "12334445";
-        $a = $this->model("PostModel");
-        // $kq = $a->getPostList();
-        $this->dl = $a->getPostList();
-        detailArr($this->dl);
-        // $this->view('Post');
+    function getComment(){
+        if(!isset($_POST['id']) || !isset($_POST['page'])){
+            die;
+        }
+        $sodong = 5;
+        $id = $_POST['id'];
+        $pageDB = $this->model("PostModel")->countCommentInPost($id);
+        $page = $_POST['page'];
+        if($pageDB['sl'] == 0){
+            $arr['type'] = 2;
+            echo json_encode($arr);
+            die;
+        }
+        if(!is_numeric($page) || $page < 0 || $page * $sodong >= $pageDB['sl']){
+            die;
+        }
+        if($pageDB['sl'] % $sodong == 0){
+            $pageDB = $pageDB['sl']/$sodong;
+        }else {
+            $pageDB = floor($pageDB['sl']/$sodong) +1;
+        }
+        $arr['type'] = '1'; 
+        if($page+1 >= $pageDB){
+            $arr['type'] = '0';
+        }
+        $model = $this->model("PostModel");
+        $check = $model->isPost($id);
+        if(!$check['sl'] >= 1){
+            $this->view("PageError");
+            $model->disConnect();
+            die;
+        }
+        $result = $model->getCommentInPost($id, $page, $sodong);
+        // detailArr($result);
+        // return;
+        for($i= 0; $i< count($result); $i++){
+            $name = $result[$i]['dp_name'] == null? $result[$i]['name']:$result[$i]['dp_name'];
+            $img = $result[$i]['img'] == null ? 'public\img\user.png' : $result[$i]['img'];
+            $arr['content'][$i] = '
+            <div class="post__comment--item">
+              <a href="" class="post__comment-left">
+                <img src="'.$img.'" alt="ảnh">
+                
+              </a>
+              <div class="post__comment-body">
+                <div class="comment-body__user">
+                  <a href="" class="user">'.$name.'</a>
+                  <p>'.$result[$i]['date'].'</p>
+                </div>
+                <div class="comment-body__content">
+                  <p class="content">'.$result[$i]['content'].'</p>
+                </div>
+                
+                <div class="comment__report">
+                  <div></div>
+                  <div>
+                    <button>
+                      <i class="far fa-flag"></i>
+                      Báo cáo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>';
+        }
+        echo json_encode($arr);
     }
 }
 

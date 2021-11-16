@@ -16,6 +16,7 @@
 }
 .slider__user-post .user-post__header img {
   width: 100px;
+  height: 100px;
   margin: 10px auto;
   border-radius: 100%;
   border: 3px solid white;
@@ -60,11 +61,18 @@
 
 .content__list h3 {
   margin: 10px;
-  
 }
-
+.content__list {
+  font-size: 1.8rem;
+  padding: 10px;
+}
 .your__comment {
   display: flex;
+}
+.your__comment--not {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1.8rem;
 }
 .your__comment .comment__wirte {
   display: flex;
@@ -98,9 +106,12 @@
 
 
 .post__comment {
-  display: flex;
   padding: 10px;
   font-size: 1.8rem;
+}
+.post__comment--item {
+  display: flex;
+  margin: 10px 0;
 }
 .post__comment-left {
   margin-right: 10px;
@@ -118,6 +129,7 @@
 .post__comment-body{
   background-color: tan;
   border-radius: 6px;
+  width: 100%;
   padding: 10px;
 }
 .post__comment-body .comment-body__user {
@@ -147,4 +159,33 @@
 }
 .comment__report button:hover {
   background-color: sandybrown;
+}
+.next-page {
+  margin-bottom: 10px;
+}
+.next-page1, .next-page2 {
+  display: none;
+  color: blue;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+
+
+#content-post div pre, #content-post div{
+  width: auto;
+  height: auto;
+  max-height: 200px;
+  max-width: 500px;
+}
+
+.toolbar span {
+  color: #2ace24;
+}
+.copy-to-clipboard-button {
+  margin-right: 20px;
+  display: block;
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
 }

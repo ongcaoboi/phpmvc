@@ -33,7 +33,7 @@ class Login extends Controller {
                     $this->dataUser = array(
                         'id' => $result['id_user'],
                         'name' => is_null($result['user_display_name'])?$result['user_name']:$result['user_display_name'],
-                        'img' => $result['user_image'],
+                        'img' => is_null($result['user_image'])?'public\img\user.png':$result['user_image'],
                     );
                     //Huỷ kết nối
                     $model->disConnect();

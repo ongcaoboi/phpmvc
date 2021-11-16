@@ -38,3 +38,12 @@ function checkEmail(email){
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase())
 }
+
+function thayDoiKyTuDacBiet(str){
+  str = str.replace("'", "&apos;");
+  str = str.replace('"', "&quot;");
+  str = str.replace("&", "&amp;");
+  str = str.replace(">", "&gt;");
+  str = str.replace("<", "&lt;");
+  return str;
+}
