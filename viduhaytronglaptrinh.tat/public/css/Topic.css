@@ -1,0 +1,9 @@
+.post__btn .btn__create-topic {
+  width: 100px;
+  height: 40px;
+  font-size: 1.6rem;
+  padding: 0;
+}
+.post__list--menu h3 {
+  margin: 10px;
+}

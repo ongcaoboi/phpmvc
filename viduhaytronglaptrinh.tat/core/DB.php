@@ -31,6 +31,7 @@ class DB {
         if($this->conn){
             $query = mysqli_query($this->conn, $sql);
             if($type == 0){
+                $data= [];
                 // néu $type = 0 thì trả vê mảng kết quả
                 while($row = mysqli_fetch_assoc($query)){
                     $data[] = $row;

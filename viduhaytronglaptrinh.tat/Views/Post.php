@@ -10,7 +10,7 @@
       <p>Kho bài viết được chia sẻ bởi cộng đồng</p>
     </div>
     <div class="post__btn">
-      <button class="btn--success-1">Viết bài</button>
+      <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>
     </div>
   </div>
   <div class="post__content">
@@ -18,7 +18,7 @@
       <div class="post__list--menu">
         <ul>
           <li id="post_1"><a href="Post">Bài viết</a></li>
-          <li id="post_2"><a href="">Chủ đề</a></li>
+          <li id="post_2"><a href="Topic">Chủ đề</a></li>
           <?php
           if(isset($_SESSION['user'])){
             echo '
@@ -159,56 +159,7 @@
 
 
     </div>
-    <div class="post__slider">
-      <div class="slider__topics">
-        <div class="topics__header">
-          <h3> Chủ đề nổi bật</h3>
-        </div>
-        <div class="topic-list"">
-        <?php
-          $arrPost = $this->dl['listPost'];
-          for($i = 0; $i < count($arrPost); $i++){
-            $id = $arrPost[$i]['id_topic'];
-            echo '
-            <a href="'.$id.'" class="topic-list__items">
-              <p>'.$arrPost[$i]['topic_name'].'</p>
-            </a>';  
-          }
-        ?>
-        </div>
-      </div>
-      <div class="slider__questions">
-        <div class="questions__header">
-          <h3>Câu hỏi mới nhất </h3>
-        </div>
-          <div class="questions-list">
-          <?php
-            $arrQuestion = $this->dl['listQuestion'];
-            for($i = 0 ; $i < count($arrQuestion); $i++){
-              $name = $arrQuestion[$i]['title'];
-              $cm = $arrQuestion[$i]['slTraLoi'];
-              $views = $arrQuestion[$i]['views'];
-              $idQuestion = $arrQuestion[$i]['id'];
-              echo '
-            <a href="" class="questions-list__items">
-              <h3>'.$name.'</h3>
-                <div class="status">
-                  <div class="status-list">
-                    <i class="fas fa-fw fa-reply"></i>
-                    <p>'.$cm.'</p>
-                  </div>
-                  <div class="status-list">
-                    <i class="far fa-eye"></i>
-                    <p>'.$views.'</p>
-                  </div>
-                </div>
-            </a>
-          ';
-            }
-          ?>
-        </div>
-      </div>
-    </div>
+<?php require_once 'Views/includes/postSlider.php' ?>
   </div>
 </div>
 <?php require_once 'Views/includes/footer.php' ?>

@@ -10,41 +10,13 @@
        <p>Kho bài viết được chia sẻ bởi cộng đồng</p>
      </div>
      <div class="post__btn">
-      <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>
+       <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>
      </div>
    </div>
    <div class="post__content">
      <div class="post__list">
        <div class="post__list--menu">
-         <ul>
-           <li id="post_1"><a href="Post">Bài viết</a></li>
-           <li id="post_2"><a href="Topic">Chủ đề</a></li>
-           <?php
-           if(isset($_SESSION['user'])){
-             echo '
-           <li id="post_3"><a href="Post/me">Bài viết của tôi</a></li>';
-           }
-           ?>
-         </ul>
-         <div>
-           <p>Sắp xếp</p>
-           <select name="" id="select_page_me">
-             <?php
-               $mode = $this->dl['select'];
-               if($mode =='views'){
-                 echo'
-                 <option value="news">Mới nhất</option>
-                 <option value="views" selected>Lượt xem</option>
-                 ';
-               }else {
-                 echo '
-                 <option value="news" selected>Mới nhất</option>
-                 <option value="views">Lượt xem</option>
-                 ';
-               }
-             ?>
-           </select>
-         </div>
+         <h3><?php echo $this->dl['title']; ?></h3>
        </div>
        <div class="post__list--content" id="listPost">
  
@@ -53,6 +25,7 @@
          $arr = $this->dl['noiDung'];
          $page = $this->dl['page'];
          $soTrang = $this->dl['soTrang'];
+         $link = $this->dl['link'];
          if($page > $soTrang){
            echo '
            <div class="content__list">
@@ -70,8 +43,8 @@
              $like = $arr[$i]['slLikes'];
              $comment = $arr[$i]['slComment'];
              $view = $arr[$i]['post_views'];
-             $time = $arr[$i]['post_date_created']; 
-             $linkDetalis = getLinkPostDetails($title.' '.$idPost);  
+             $time = $arr[$i]['post_date_created'];
+             $linkDetalis = getLinkPostDetails($title.' '.$idPost);
            // echo $name;
          echo '
          <div class="content__list">
@@ -125,7 +98,7 @@
            if($page > 1){
              echo '
            <div class="prev-page">
-             <a href="post/me/'.$mode.'/'.($page-1).'">Prev</a>
+             <a href="topic/details/'.$link.'/'.($page-1).'">Prev</a>
            </div>
            ';
            }else {
@@ -136,10 +109,10 @@
            ';
            for($i = 1; $i <= $soTrang; $i++){
              if($i == $page){
-               echo '<a href="post/me/'.$mode.'/'.$page.'" class="pages-index_light">'.$page.'</a> ';
+               echo '<a href="topic/details/'.$link.'/'.$page.'" class="pages-index_light">'.$page.'</a> ';
                continue;
              }
-             echo '<a href="post/me/'.$mode.'/'.$i.'" class="pages-index">'.$i.'</a> ';
+             echo '<a href="topic/details/'.$link.'/'.$i.'" class="pages-index">'.$i.'</a> ';
            }
  
            echo '</div>';
@@ -147,7 +120,7 @@
            if($page < $soTrang){
              echo '
            <div class="next-page">
-             <a href="post/me/'.$mode.'/'.($page+1).'">Next</a>
+             <a href="topic/details/'.$link.'/'.($page+1).'">Next</a>
            </div>
            ';
            }else {

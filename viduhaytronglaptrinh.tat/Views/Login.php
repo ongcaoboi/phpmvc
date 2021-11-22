@@ -75,6 +75,14 @@
                 $("#error").html("<b>Tên tài khoản không được để trống</b>");
                 return false;
             }
+            if(findVietnamese(user)){
+                $("#error").html("<b>Tên tài khoản không được có dấu</b>");
+                return false;
+            }
+            if(!testUser(user)){
+                $("#error").html("<b>Tên tài khoản không hơp lệ</b>");
+                return false;
+            }
             if(pass == ""){
                 $("#error").html("<b>Mật khẩu không được để trống</b>");
                 return false;

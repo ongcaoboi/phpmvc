@@ -1,0 +1,152 @@
+body {
+  background-color: white;
+  font: arial;
+}
+.top{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+}
+.top .header_button {
+  margin: 60px;
+}
+
+.top .question_header{
+  margin: 50px;
+  font-weight: bold;
+}
+.top .question_header h2{
+  margin-bottom: 20px;
+}
+
+.question__content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  flex-direction: row;
+
+}
+.left{
+margin: 20px;
+width: 65%;
+min-width: 300px;
+float: left;
+}
+.left .question_list_menu{
+  align-items: center;
+  height: auto;
+  margin: 0 5px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #c3c9c9;
+}
+.question_list_menu ul{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+  .question_list_menu ul li a{
+  color: #575757;
+  box-sizing: unset;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-clip: padding-box;
+  text-decoration: none;
+}
+.question_list_menu ul li a:hover{
+  background-color: white;
+}
+.question_list_menu div{
+  display: flex;
+}
+select {
+  background-color:  rgb(207, 207, 207);
+  border: none;
+  font-size: 1.8rem;
+  color: #b93632;
+}
+.left .content{
+  display: flex;
+  border: 1px solid rgb(207, 207, 207);
+  background-color: white;
+  margin: 2.5px 5px;
+  align-items: center;
+  align-content: stretch;
+  flex-direction: row;
+}
+.media-body .user{
+  color: blue;
+}
+.title{
+  color: black;
+}
+.question__status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:5px;
+}
+.status-list {
+  display: flex;
+  text-decoration: none;
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+.status-list p {
+  display: block;
+  margin-left: 4px;
+}
+
+.status-list img {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  margin-left: 4px;
+}
+.content .media img{
+    height: 40px;
+    width: 40px;
+}
+.question__status .status-list-img img{
+  height: 12px;
+  width: 12px;
+}
+
+.right{
+  margin: 20px;
+  width: 25%;
+  min-width: 300px;
+}
+.slider__questions {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+}
+.questions__header-{
+  background-color: #c3c9c9;
+}
+.questions-list__items{
+  padding: 20px 20px;
+  margin: 20px 0 40px 0;
+}
+.questions-list__items h3 {
+font-weight: normal;
+color: #b93632;
+}
+
+@media  (max-width: 768px){
+  .left, .right {
+       width: 90%;
+  }
+}

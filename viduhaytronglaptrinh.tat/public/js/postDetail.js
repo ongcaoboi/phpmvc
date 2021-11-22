@@ -8,15 +8,33 @@ $(document).ready(function(){
     num += 1;
     getPageComment();
   });
-  // var b = document.getElementById("content-post");
-  // var c = document.getElementById("content-post1");
-  // var a =$("#content-post");
-  // console.log(a);
-  // console.log('-----------');
-  // console.log(b);
-  // $('#btn_comment').on('click', function(){
-  //   c.innerHTML = b;
-  // });
+  var button = $('#btn_comment');
+  $("#comment_text").on('input',function(e){
+    if(e.target.value === ''){
+      button.removeClass('btn--success-1');
+      button.addClass('btn-disabled');
+    } else {
+      button.addClass('btn--success-1');
+      button.removeClass('btn-disabled');
+    }
+  });
+  button.on('click', function (){
+    if($('#comment_text').val()=="") return;
+    let content = $('#comment_text').val();
+    $.ajax({
+      url: 'post/Comment',
+      type: 'POST',
+      data: {'id': id_post, 'content': content },
+      success: function(response){
+        let rs = JSON.parse(response);
+        if(rs.position == "0"){
+          alert(rs.messenger);
+        }else if(rs.position == "1"){
+          location.reload();
+        }
+      }
+    });
+  });
     
   function getPageComment(){
     $.ajax({

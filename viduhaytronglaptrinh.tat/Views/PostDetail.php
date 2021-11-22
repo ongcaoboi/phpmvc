@@ -23,6 +23,8 @@ $imgUserPost = $arrUser['img'] == null ? 'public\img\user.png' : $arrUser['img']
 $postUserPost = $arrUser['post'];
 $questionUserPost = $arrUser['question'];
 $commentUserPost = $arrUser['comment'];
+
+$arrPost = $this->dl['postLikeTitle'];
 ?>
 
 
@@ -33,7 +35,7 @@ $commentUserPost = $arrUser['comment'];
       <p>Kho bài viết được chia sẻ bởi cộng đồng</p>
     </div>
     <div class="post__btn">
-      <button class="btn--success-1">Viết bài</button>
+      <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>
     </div>
   </div>
   <div class="post__content">
@@ -94,8 +96,8 @@ $commentUserPost = $arrUser['comment'];
               <img src="'.$_SESSION['user']['img'].'" alt="ảnh">
             </div>
             <div class="comment__wirte">
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-              <button id="btn_comment" class="btn--success-1">
+              <textarea name="" id="comment_text" cols="30" rows="10"></textarea>
+              <button id="btn_comment" class="btn-disabled">
                 <i class="fas fa-reply"></i>  
                 Nhận xét
               </button>
@@ -167,21 +169,21 @@ $commentUserPost = $arrUser['comment'];
       echo '
       <div class="slider__user-post">
         <a href="#" class="user-post__header">
-          <img src="' . $imgUserPost . '" alt="user">
+          <img src="'.$imgUserPost.'" alt="user">
         </a>
-        <a href="profile/' . $idUserPost . '">' . $nameUserPost . '</a>
+        <a href="profile/'.$idUserPost.'">'.$nameUserPost.'</a>
         <div class="user-post__info">
           <div>
             <p>bài viết</p>
-            <p>' . $postUserPost . '</p>
+            <p>'.$postUserPost.'</p>
           </div>
           <div>
             <p>Câu hỏi</p>
-            <p>' . $questionUserPost . '</p>
+            <p>'.$questionUserPost.'</p>
           </div>
           <div>
             <p>Bình luận</p>
-            <p>' . $commentUserPost . '</p>
+            <p>'.$commentUserPost.'</p>
           </div>
         </div>
       </div>';
@@ -195,64 +197,37 @@ $commentUserPost = $arrUser['comment'];
         <div class="questions__header">
           <h3>Bài viết liên quan </h3>
         </div>
-
+      
         <div class="questions-list">
 
           <!--  mở đầu 1 item câu hỏi trong list câu hỏi mới nhất -->
-          <a href="" class="questions-list__items">
-            <h3>Đây là tên</h3>
+        <?php
+      for($i = 0; $i < count($arrPost); $i++){
+        $title_ = $arrPost[$i]['post_title'];
+        $id_ = $arrPost[$i]['id_post'];
+        $linkDetalis = getLinkPostDetails($title_.' '.$id_);
+        echo '
+          <a href="post/details/'.$linkDetalis.'" class="questions-list__items">
+            <h3>'.$arrPost[$i]['post_title'].'</h3>
             <div class="status">
               <div class="status-list">
                 <i class="fas fa-thumbs-up"></i>
-                <p>10</p>
+                <p>'.$arrPost[$i]['slLikes'].'</p>
               </div>
               <div class="status-list">
                 <i class="far fa-comments"></i>
-                <p>2</p>
+                <p>'.$arrPost[$i]['slComment'].'</p>
               </div>
               <div class="status-list">
                 <i class="far fa-eye"></i>
-                <p>10.000</p>
+                <p>'.$arrPost[$i]['post_views'].'</p>
               </div>
             </div>
           </a>
+          ';
+      }
+        ?>
           <!-- Kết thúc 1 item câu hỏi -->
-
-          <a href="" class="questions-list__items">
-            <h3>Đây là tên</h3>
-            <div class="status">
-              <div class="status-list">
-                <i class="fas fa-thumbs-up"></i>
-                <p>10</p>
-              </div>
-              <div class="status-list">
-                <i class="far fa-comments"></i>
-                <p>2</p>
-              </div>
-              <div class="status-list">
-                <i class="far fa-eye"></i>
-                <p>10.000</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="" class="questions-list__items">
-            <h3>Đây là tên</h3>
-            <div class="status">
-              <div class="status-list">
-                <i class="fas fa-thumbs-up"></i>
-                <p>10</p>
-              </div>
-              <div class="status-list">
-                <i class="far fa-comments"></i>
-                <p>2</p>
-              </div>
-              <div class="status-list">
-                <i class="far fa-eye"></i>
-                <p>10.000</p>
-              </div>
-            </div>
-          </a>
 
         </div>
       </div>

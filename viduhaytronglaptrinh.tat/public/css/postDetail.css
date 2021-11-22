@@ -94,7 +94,6 @@
   border-radius: 10px;
 }
 .comment__wirte button {
-  cursor: pointer;
   padding: 5px;
   width: 120px;
   border-radius: 30px;
@@ -161,6 +160,7 @@
   background-color: sandybrown;
 }
 .next-page {
+  /* border-radius: 20px; */
   margin-bottom: 10px;
 }
 .next-page1, .next-page2 {
@@ -169,7 +169,14 @@
   font-size: 2.2rem;
   margin-bottom: 10px;
 }
-
+.btn-disabled {
+  background-color: #d9e0d9;
+  border: none;
+  color: blue;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  padding: 8px 24px;
+}
 
 
 #content-post div pre, #content-post div{

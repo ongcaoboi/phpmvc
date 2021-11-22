@@ -27,16 +27,34 @@
   padding-left: 20px;
   padding-right: 50px;
 }
+.post__btn button {
+  padding: 20px;
+  width: 70px;
+  position: relative;
+}
+.post__btn button a {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  font-size: 1.6rem;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #fff;
+}
 
 .post__content {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  margin: 5px;
+  padding: 20px 25px;
 }
 .post__list {
-  margin: 20px;
-  width: 65%;
+  padding: 25px;
+  width: 70%;
   min-width: 300px;
 }
 .post__list--menu {
@@ -69,6 +87,9 @@
 }
 .post__list--menu div {
   display: flex;
+}
+.post__list--menu h3 {
+  margin: 10px;
 }
 select {
   background-color:  rgb(207, 207, 207);
@@ -167,9 +188,10 @@ select {
 
 /* Slider */
 .post__slider {
-  margin: 20px;
-  width: 25%;
+  width: 30%;
   min-width: 300px;
+  padding: 25px;
+  padding-left: 0px;
 }
 .topics__header, .questions__header {
   background-color: darkgoldenrod;
@@ -207,8 +229,20 @@ select {
 @media  (max-width: 768px){ 
   .post__list {
     width: 100%;
+    padding: 25px 10px;
   }
   .post__slider {
     width: 100%;
+    padding: 25px 10px;
   }
+  .post__content {
+    padding: 0 10px;
+  }
+  .post__header--content {
+    padding-left: 20px;
+  }
+  .post__btn {
+    padding-right: 20px;
+  }
+
 }

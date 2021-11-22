@@ -8,6 +8,48 @@ class Post extends Controller {
         $this->page('news',1);
         
     }
+    function Comment(){
+        if(isset($_POST['id']) && isset($_POST['content'])){
+            if(isset($_SESSION['user'])){
+                if($_POST['content']==""){
+                    echo json_encode(array(
+                        'position' => '0',
+                        'messenger' => 'Đừng để trống bình luận chứ'
+                    ));
+                }else{
+                    if($this->model("PostModel")->comment($_POST['id'],$_SESSION['user']['id'], $_POST['content'])){
+                        echo json_encode(array(
+                            'position' => '1',
+                            'messenger' => 'ok'
+                        ));
+                    }else{
+                        echo json_encode(array(
+                            'position' => '0',
+                            'messenger' => 'Có lỗi rồi đó'
+                        ));
+                    }
+                }
+            }else{
+                echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Có lỗi rồi đó'
+                ));
+            }
+        }else{
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Có lỗi rồi đó'
+            ));
+        }
+    }
+    function write(){
+        // if(!isset($_SESSION['user'])){
+        //     header('Location: /Login');
+        //     die;
+        // }
+        $this->title = "Viết bài";
+        $this->view("PostWrite");
+    }
     function details($str = null) {
         if(!is_string($str)){
             $this->view('PageError');
@@ -15,6 +57,10 @@ class Post extends Controller {
         }
         $str = explode("-", $str);
         $idPost = $str[count($str)-1];
+        if(!is_numeric($idPost)){
+            $this->view('PageError');
+            die;
+        }
         $model = $this->model("PostModel");
         $result = $model->getPostDetails($idPost);
         if(!is_array($result)){
@@ -23,10 +69,26 @@ class Post extends Controller {
             die;
         }
         $this->title = $result['post_title'];
-        // detailArr($result);
         $this->dl['postDetails'] = $result;
         $this->dl['infoUserPost'] = $this->model('PostModel')->getInfoUserPost($result['id_user']);
+        $keys = $str[rand(0, count($str)-2)];
+        $this->dl['postLikeTitle'] = $this->model('PostModel')->getPostLikeTitle($keys);
+        $t  = -1;
+        for ($i=0; $i < count($this->dl['postLikeTitle']); $i++) { 
+            if($this->dl['postLikeTitle'][$i]['id_post'] == $idPost){
+                $t = $i;
+                break;
+            }
+        }
+        if($t != -1){
+            array_splice($this->dl['postLikeTitle'], $t, 1);
+            // unset($this->dl['postLikeTitle'][$t]);
+            // array_values($this->dl['postLikeTitle']);  
+        }
         // detailArr($this->dl);
+
+        // $idTopic =  $this->dl['infoUserPost']['id_topic'];
+
         $model->disConnect();
         $this->view("PostDetail");
         
@@ -35,7 +97,7 @@ class Post extends Controller {
         if(!is_numeric($page)|| $page <= 0){
             $page = 1;
         }
-        $sodong = 3;
+        $sodong = 10;
         $model = $this->model("PostModel");
         $sl = $model->getNumPost();
         if($sl['sl']%$sodong == 0){
@@ -80,7 +142,7 @@ class Post extends Controller {
         if(!is_numeric($page)|| $page <= 0){
             $page = 1;
         }
-        $sodong = 3;
+        $sodong = 10;
         $model = $this->model("PostModel");
         $sl = $model->getNumYourPost($_SESSION['user']['id']);
         if($sl['sl']%$sodong == 0){
@@ -146,7 +208,8 @@ class Post extends Controller {
             $model->disConnect();
             die;
         }
-        $result = $model->getCommentInPost($id, $page, $sodong);
+        $vtbd = $page*$sodong;
+        $result = $model->getCommentInPost($id, $vtbd, $sodong);
         // detailArr($result);
         // return;
         for($i= 0; $i< count($result); $i++){
