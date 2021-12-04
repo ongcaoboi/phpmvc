@@ -1,0 +1,158 @@
+.profile {
+    position: relative;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 0;  
+  }
+
+.profile__header {
+    height: 150px;
+    display: flex;
+    color: aliceblue;
+    justify-content: space-between;
+    background-color: #040404;
+  }
+  
+  .profile__header--content {
+    padding: 40px 0 40px 50px;
+  }
+  .profile__header--content h1{
+    padding: 10px 0;
+  }
+
+.profile__content {
+    height: 500px;
+    display: flex;
+    color:#040404;
+    justify-content: space-between;
+    background-color:white;
+}
+
+
+.profile .profile__content .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile .profile__content .container .noi-dung{
+    padding: 40px 0 40px 50px;
+    margin-right: 30px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #000102;
+    letter-spacing: 1px;
+    padding-bottom: 300px;
+}
+
+.profile .profile__content .container .noi-dung .anh{
+    padding-bottom: 300px;
+}
+
+.profile .profile__content .container .noi-dung .anh img{
+    max-height: 150px;
+    margin-left: 50px;
+
+}
+
+.profile .profile__content .container .noi-dung p{
+    color: #000102;
+    padding: 10px 0;
+    margin-left: 30px;
+}
+
+.profile .profile__content .container .btn1{
+  position: absolute;
+  left: 8%;
+}
+
+.profile .profile__content .container .btn1 button{
+    color: #000102;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 350%;
+}
+
+.profile .profile__content .container .btn2{
+  position: absolute;
+  left: 20%;
+}
+
+.profile .profile__content .container .btn2 button{
+    color: #000102;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 323%;
+}
+
+.profile .profile__content .container .btn3{
+  position: absolute;
+  left: 33%;
+}
+
+.profile .profile__content .container .btn3 button{
+    color: #000102;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 306%;
+}
+.container_change {
+    color: white;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    bottom: 20%;
+    right: 20%;
+    z-index: 2;
+    display: none;
+    background-color: #343a40;
+}
+
+.container_change .btn_quit {
+    color : black;
+    margin-left: 90%;
+}
+
+.container_change p{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    color : white;
+    letter-spacing: 1px;
+    margin-left: 20%;
+    margin-top: 20px;
+    white-space: pre;
+}
+
+.container_change p input{
+  margin-left: 10%;
+}
+
+.container_change button {
+  margin-left: 40%;
+  margin-top: 30px;
+}
+
+.container_change h2{
+    color: white;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 3%;
+    margin-left: 40%;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.container_show {
+    display: block;
+}

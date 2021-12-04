@@ -1,3 +1,6 @@
+.post__btn {
+  position: relative;
+}
 .post__btn .btn__create-topic {
   width: 100px;
   height: 40px;
@@ -6,4 +9,45 @@
 }
 .post__list--menu h3 {
   margin: 10px;
+}
+.form__create-topic {
+  background-color: #343a40;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  top: 80%;
+  right: 10%;
+  z-index: 2;
+  display: none;
+  padding: 20px;
+  border-radius: 4px;
+}
+.form__create-topic h2 {
+  margin-bottom: 10px;
+}
+#create_ , #name_ {
+  font-size: 2rem;
+  width: 100%;
+  padding: 10px;
+  height: 30px;
+  margin-top: 20px;
+}
+.form__create-topic-1 {
+  display: block;
+}
+.form__create-topic .btn__create-close {
+  border: none;
+  background-color: transparent;
+  font-size: 3rem;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#create_ {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  font-size: 2rem;
+  border-radius: 3px;
 }

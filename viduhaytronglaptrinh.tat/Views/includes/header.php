@@ -65,7 +65,7 @@
                             <img src="'.$user_img.'" alt="profile_pic" class="header__profile-img">
                             <p>'.$_SESSION['user']['name'].'</p> 
                             <div class="header__account-menu">
-                                <a href="">
+                                <a href="profile">
                                     <button class="btn btn--success">
                                         <span>Thông tin</span>
                                     </button>
@@ -123,7 +123,7 @@
                                         <img src="'.$user_img.'" alt="profile_pic"/>
                                     </div>
                                     <div>
-                                        <a href="" class="container__sidebar-info">'.$_SESSION['user']['name'].'</a>
+                                        <a href="profile" class="container__sidebar-info">'.$_SESSION['user']['name'].'</a>
                                     </div>
                                 </div>
                             
@@ -184,7 +184,7 @@
                             <img src="'.$user_img.'" alt="profile_pic" class="sidebar__profile-img" />
                             </div>
                         <div class="container__sidebar-info">
-                            <a href="" class="container__sidebar-info">'.$_SESSION['user']['name'].'</a>
+                            <a href="profile" class="container__sidebar-info">'.$_SESSION['user']['name'].'</a>
                         </div>
                     </div>
                         ';

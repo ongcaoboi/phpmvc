@@ -6,7 +6,7 @@ class Post extends Controller {
         $this->title = "Bài viết";
         // $this->view("Post");
         $this->page('news',1);
-        
+            
     }
     function Comment(){
         if(isset($_POST['id']) && isset($_POST['content'])){
@@ -72,7 +72,12 @@ class Post extends Controller {
         $this->dl['postDetails'] = $result;
         $this->dl['infoUserPost'] = $this->model('PostModel')->getInfoUserPost($result['id_user']);
         $keys = $str[rand(0, count($str)-2)];
-        $this->dl['postLikeTitle'] = $this->model('PostModel')->getPostLikeTitle($keys);
+        $kq = $this->model('PostModel')->getPostLikeTitle($keys);
+        while($kq == null){
+            $keys = $str[rand(0, count($str)-2)];
+            $kq = $this->model('PostModel')->getPostLikeTitle($keys);
+        }
+        $this->dl['postLikeTitle'] = $kq;
         $t  = -1;
         for ($i=0; $i < count($this->dl['postLikeTitle']); $i++) { 
             if($this->dl['postLikeTitle'][$i]['id_post'] == $idPost){
@@ -83,12 +88,9 @@ class Post extends Controller {
         if($t != -1){
             array_splice($this->dl['postLikeTitle'], $t, 1);
             // unset($this->dl['postLikeTitle'][$t]);
-            // array_values($this->dl['postLikeTitle']);  
+            // array_values($this->dl['postLikeTitle']); 
         }
         // detailArr($this->dl);
-
-        // $idTopic =  $this->dl['infoUserPost']['id_topic'];
-
         $model->disConnect();
         $this->view("PostDetail");
         
@@ -214,33 +216,53 @@ class Post extends Controller {
         // return;
         for($i= 0; $i< count($result); $i++){
             $name = $result[$i]['dp_name'] == null? $result[$i]['name']:$result[$i]['dp_name'];
+            $idUser = $result[$i]['id_user'];
             $img = $result[$i]['img'] == null ? 'public\img\user.png' : $result[$i]['img'];
-            $arr['content'][$i] = '
-            <div class="post__comment--item">
-              <a href="" class="post__comment-left">
-                <img src="'.$img.'" alt="ảnh">
-                
-              </a>
-              <div class="post__comment-body">
-                <div class="comment-body__user">
-                  <a href="" class="user">'.$name.'</a>
-                  <p>'.$result[$i]['date'].'</p>
-                </div>
-                <div class="comment-body__content">
-                  <p class="content">'.$result[$i]['content'].'</p>
-                </div>
-                
-                <div class="comment__report">
-                  <div></div>
-                  <div>
-                    <button>
-                      <i class="far fa-flag"></i>
-                      Báo cáo
-                    </button>
+            if(isset($_SESSION['user'])){
+                $arr['content'][$i] = '
+                <div class="post__comment--item">
+                  <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                    <img src="'.$img.'" alt="ảnh">
+                    
+                  </a>
+                  <div class="post__comment-body">
+                    <div class="comment-body__user">
+                      <a href="profile/user/'.$idUser.'" class="user">'.$name.'</a>
+                      <p>'.$result[$i]['date'].'</p>
+                    </div>
+                    <div class="comment-body__content">
+                      <p class="content">'.$result[$i]['content'].'</p>
+                    </div>
+                    
+                    <div class="comment__report">
+                      <div></div>
+                      <div>
+                        <button>
+                          <i class="far fa-flag"></i>
+                          Báo cáo
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>';
+                </div>';
+            }else{
+                $arr['content'][$i] = '
+                <div class="post__comment--item">
+                  <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                    <img src="'.$img.'" alt="ảnh">
+                    
+                  </a>
+                  <div class="post__comment-body">
+                    <div class="comment-body__user">
+                      <a href="profile/user/'.$idUser.'" class="user">'.$name.'</a>
+                      <p>'.$result[$i]['date'].'</p>
+                    </div>
+                    <div class="comment-body__content">
+                      <p class="content">'.$result[$i]['content'].'</p>
+                    </div>
+                  </div>
+                </div>';
+            }
         }
         echo json_encode($arr);
     }

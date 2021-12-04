@@ -31,6 +31,9 @@ class Topic extends Controller{
         $arrTemp[$index]['slComment'] = $arr[$i]['slComment'];
         $arrTemp[$index]['slLike'] = $arr[$i]['slLike'];
         $arrTemp[$index]['slPost'] = 1;
+        if($arr[$i]['post_views']== null){
+          $arrTemp[$index]['slPost'] = 0;
+        }
       }
     }
     for ($i = 1; $i < count($arr); $i++) {
@@ -67,28 +70,50 @@ class Topic extends Controller{
     }
     $sodong = 10;
     $sl = $this->model("TopicModel")->countPostInTopic($idTopic);
-    if ($sl['sl'] % $sodong == 0) {
-      $sotrangdl = $sl['sl'] / $sodong;
-    } else {
-      $sotrangdl = floor($sl['sl'] / $sodong) + 1;
-    }
-    $vitri = (--$page) * $sodong;
+    $this->title = $this->model("TopicModel")->getNameTopic($idTopic)['topic_name'];
+    $this->dl['title'] = $this->title;
     $this->dl['listQuestion'] = $this->model("PostModel")->getTopQuestion();
     $this->dl['listPost'] = $this->model("PostModel")->getTopPost();
-    if($page > $sotrangdl){
-      $this->view('PageError');
-      die;
+    if($sl['sl'] != 0){
+      if ($sl['sl'] % $sodong == 0) {
+        $sotrangdl = $sl['sl'] / $sodong;
+      } else {
+        $sotrangdl = floor($sl['sl'] / $sodong) + 1;
+      }
+      $vitri = (--$page) * $sodong;
+      if($page > $sotrangdl){
+        $this->view('PageError');
+        die;
+      }else{
+        $kq = $this->model("TopicModel")->getPostInTopic($idTopic, $vitri, $sodong);
+      }
+      $this->title = $kq[0]['topic_name'];
+      $this->dl['noiDung'] = $kq;
+      $this->dl['page'] = $page+1;
+      $this->dl['soTrang'] = $sotrangdl;
     }else{
-      $kq = $this->model("TopicModel")->getPostInTopic($idTopic, $vitri, $sodong);
+      $this->dl['noiDung'] = [];
+      $this->dl['page'] = 0;
+      $this->dl['soTrang'] = 0;
     }
-    $this->title = $kq[0]['topic_name'];
-    $this->dl['title'] = $kq[0]['topic_name'];
-    $this->dl['noiDung'] = $kq;
-    $this->dl['page'] = $page+1;
-    $this->dl['soTrang'] = $sotrangdl;
     
     // detailArr($this->dl);
 
     $this->view('TopicDetails');
+  }
+  function createTopic(){
+    if(!isset($_POST['name'])){
+      $this->view('PageError');
+      die;
+    }
+    if($this->model("TopicModel")->isNameTopic($_POST['name'])['sl'] == 0){
+      if($this->model("TopicModel")->createTopic($_POST['name'])){
+        echo 'Thêm thành công!';
+      }else{
+        echo 'thêm thất bại!';
+      }
+    }else{
+      echo 'đã tồn tại topic này!';
+    }
   }
 }

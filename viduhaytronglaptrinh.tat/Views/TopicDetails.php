@@ -26,7 +26,7 @@
          $page = $this->dl['page'];
          $soTrang = $this->dl['soTrang'];
          $link = $this->dl['link'];
-         if($page > $soTrang){
+         if($page > $soTrang|| $arr == NULL){
            echo '
            <div class="content__list">
              Không có bài viết nào
@@ -59,7 +59,6 @@
                <a href="post/details/'.$linkDetalis.'" class="post">
                  <div class="title">
                    <h3>'.$title.'</h3>
-                   <a href="'.$topic.'" class="topic">'.$topic.'</a>
                  </div>
                  <a href="post/details/'.$linkDetalis.'"><p class="content">'.$content.'</p></a>
                </a>

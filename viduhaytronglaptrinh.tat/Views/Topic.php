@@ -7,7 +7,6 @@
 
 ?>
 
-
 <div class="post">
   <div class="post__header">
     <div class="post__header--content">
@@ -16,6 +15,14 @@
     </div>
     <div class="post__btn">
       <button class="btn--success-1 btn__create-topic">Tạo chủ đề</button>
+      <div class="form__create-topic" >
+        <button class="btn__create-close"><i class="fas fa-times f-9"></i></button>
+        <div>
+          <h2>Tên chủ đề</h2>
+          <input id="name_" type="text" maxlength="100">
+          <button id="create_" class="btn--success">Tạo</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="post__content">
@@ -76,5 +83,35 @@
 <?php require_once 'Views/includes/postSlider.php' ?>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.btn__create-topic').on("click", function (){
+      let a = document.querySelector(".form__create-topic");
+      a.classList.toggle("form__create-topic-1");
+    });
+    $('.btn__create-close').on("click", function (){
+      let a = document.querySelector(".form__create-topic");
+      a.classList.toggle("form__create-topic-1");
+    });
+    $('#create_').on("click", function (){
+      var name = $('#name_').val();
+      if(name == ""){
+        alert("Vui lòng nhập tên chủ để");
+        return;
+      }
+      $.ajax({
+        url: 'Topic/createTopic',
+        type: 'POST',
+        data: {
+          'name': name
+        },
+        success: function (response){
+          alert(response);
+        }
+      });
+    });
+  });
+</script>
 
 <?php require_once 'Views/includes/footer.php' ?>

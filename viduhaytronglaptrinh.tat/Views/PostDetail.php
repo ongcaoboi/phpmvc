@@ -9,6 +9,7 @@
 $arr = $this->dl['postDetails'];
 $idPost = $arr['id_post'];
 $title = $arr['post_title'];
+$idTopic = $arr['id_topic'];
 $topic = $arr['topic_name'];
 $content = $arr['post_content'];
 $like = $arr['slLikes'];
@@ -42,6 +43,8 @@ $arrPost = $this->dl['postLikeTitle'];
     <div class="post__list">
 
       <?php
+      
+      $linkTopicDetalis = getLinkPostDetails($topic.' '.$idTopic);
       echo '
       <div class="post__list--menu">
         <h2>' . $title . '</h2>
@@ -68,7 +71,7 @@ $arrPost = $this->dl['postLikeTitle'];
         </div>
         <div class="status__topic">  
           <h4>Chủ đề</h4>
-          <a href="#">' . $topic . '</a>
+          <a href="Topic/details/'.$linkTopicDetalis.'">' . $topic . '</a>
         </div>
       </div>';
 
@@ -81,6 +84,18 @@ $arrPost = $this->dl['postLikeTitle'];
         <div id="content-post" class="content__list">
           <?php
           echo $content;
+          if(isset($_SESSION['user'])){
+            echo '
+          <div class="comment__report">
+            <div></div>
+            <div>
+              <button>
+                <i class="far fa-flag"></i>
+                Báo cáo
+              </button>
+            </div>
+          </div>';
+          }
           ?>
         </div>
 
@@ -92,7 +107,7 @@ $arrPost = $this->dl['postLikeTitle'];
           if (isset($_SESSION['user'])) {
             echo '
           <div class="your__comment">
-            <div href="" class="your__comment-left">
+            <div class="your__comment-left">
               <img src="'.$_SESSION['user']['img'].'" alt="ảnh">
             </div>
             <div class="comment__wirte">
@@ -168,10 +183,10 @@ $arrPost = $this->dl['postLikeTitle'];
       <?php
       echo '
       <div class="slider__user-post">
-        <a href="#" class="user-post__header">
+        <a href="profile/user/'.$idUserPost.'" class="user-post__header">
           <img src="'.$imgUserPost.'" alt="user">
         </a>
-        <a href="profile/'.$idUserPost.'">'.$nameUserPost.'</a>
+        <a href="profile/user/'.$idUserPost.'">'.$nameUserPost.'</a>
         <div class="user-post__info">
           <div>
             <p>bài viết</p>
