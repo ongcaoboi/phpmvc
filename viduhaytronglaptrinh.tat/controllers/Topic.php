@@ -7,6 +7,7 @@ class Topic extends Controller{
 
     $this->dl['listQuestion'] = $this->model("PostModel")->getTopQuestion();
     $this->dl['listPost'] = $this->model("PostModel")->getTopPost();
+    $this->dl['listTopic'] = $this->model("PostModel")->getTopTopic();
     $arr = $this->model("TopicModel")->getAllPost();
     $arrTemp = [];
     $arrTemp[0]['id_topic'] = $arr[0]['id_topic'];
@@ -73,6 +74,7 @@ class Topic extends Controller{
     $this->title = $this->model("TopicModel")->getNameTopic($idTopic)['topic_name'];
     $this->dl['title'] = $this->title;
     $this->dl['listQuestion'] = $this->model("PostModel")->getTopQuestion();
+    $this->dl['listTopic'] = $this->model("PostModel")->getTopTopic();
     $this->dl['listPost'] = $this->model("PostModel")->getTopPost();
     if($sl['sl'] != 0){
       if ($sl['sl'] % $sodong == 0) {
@@ -108,12 +110,21 @@ class Topic extends Controller{
     }
     if($this->model("TopicModel")->isNameTopic($_POST['name'])['sl'] == 0){
       if($this->model("TopicModel")->createTopic($_POST['name'])){
-        echo 'Thêm thành công!';
+        echo json_encode(array(
+          'position' =>  '1',
+          'messenger' => 'Thêm thành công!'
+        ));
       }else{
-        echo 'thêm thất bại!';
+        echo json_encode(array(
+            'position' => '0',
+            'messenger' => 'Thêm thất bại!'
+        ));
       }
     }else{
-      echo 'đã tồn tại topic này!';
+      echo json_encode(array(
+          'position' => '0',
+          'messenger' => 'Đã có Topic này rồi!'
+      ));
     }
   }
 }

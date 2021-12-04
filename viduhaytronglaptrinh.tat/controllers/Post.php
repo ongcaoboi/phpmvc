@@ -109,6 +109,7 @@ class Post extends Controller {
         }
         $this->dl['listQuestion'] = $this->model("PostModel")->getTopQuestion();
         $this->dl['listPost'] = $this->model("PostModel")->getTopPost();
+        $this->dl['listTopic'] = $this->model("PostModel")->getTopTopic();
         if($page > $sotrangdl){
             $this->dl['noiDung'] = null;
             $this->dl['page'] = $page;
@@ -153,6 +154,7 @@ class Post extends Controller {
             $sotrangdl = floor($sl['sl']/$sodong) + 1;
         }
         $this->dl['listQuestion'] = $this->model("PostModel")->getTopQuestion();
+        $this->dl['listTopic'] = $this->model("PostModel")->getTopTopic();
         $this->dl['listPost'] = $this->model("PostModel")->getTopPost();
         if($page > $sotrangdl){
             $this->dl['noiDung'] = null;

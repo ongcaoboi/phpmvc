@@ -69,10 +69,18 @@ class PostModel extends DB
     }
   }
   // Hàm lấy Top 10 chủ đề nổi bật nhất mới nhất
-  function getTopPost()
+  function getTopTopic()
   {
     if ($this->conn) {
       $sql = "SELECT `topic`.`id_topic`, `topic_name`, COUNT(`post`.`id_topic`) as `sl` FROM `topic` left JOIN `post` on `topic`.`id_topic` = `post`.`id_topic` GROUP by `id_topic` ORDER by `sl` DESC LIMIT 0,10";
+      $a = $this->fetch_assoc($sql, 0);
+      $this->disConnect();
+      return $a;
+    }
+  }
+  function getTopPost(){
+    if ($this->conn) {
+      $sql = "call getTopPost()";
       $a = $this->fetch_assoc($sql, 0);
       $this->disConnect();
       return $a;

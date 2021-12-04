@@ -9,7 +9,6 @@
                 <li><a href=""><i class="fab fa-facebook"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                <li><a href=""><i class="fab fa-youtube"></i></a></li>
             </ul>
         </div>
         <div class="noi-dung links">
@@ -17,8 +16,6 @@
             <ul>
                 <li><a href="./Home">Trang Chủ</a></li>
                 <li><a href="./About">Về Chúng Tôi</a></li>
-                <li><a href="./About">Dịch Vụ</a></li>
-                <li><a href="./About">Điều Kiện Chính Sách</a></li>
             </ul>
         </div>
         <div class="noi-dung contact">

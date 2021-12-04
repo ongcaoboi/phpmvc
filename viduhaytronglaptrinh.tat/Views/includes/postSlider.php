@@ -6,7 +6,7 @@
         </div>
         <div class="topic-list"">
         <?php
-          $arrTopic = $this->dl['listPost'];
+          $arrTopic = $this->dl['listTopic'];
           for($i = 0; $i < count($arrTopic); $i++){
             $id = $arrTopic[$i]['id_topic'];
             $link = getLinkPostDetails($arrTopic[$i]['topic_name'].' '.$id);
@@ -16,6 +16,44 @@
             </a>';  
           }
         ?>
+        </div>
+      </div>
+      <div class="slider__questions">
+        <div class="post__header1">
+          <h3>Bài viết nổi bật </h3>
+        </div>
+          <div class="post-list">
+          <?php
+            $arrPost = $this->dl['listPost'];
+            for($i = 0 ; $i < count($arrPost); $i++){
+              $idPost = $arrPost[$i]['id_post'];
+              $name = $arrPost[$i]['post_title'];
+              $cm = $arrPost[$i]['slComment'];
+              $views = $arrPost[$i]['post_views'];
+              $likes = $arrPost[$i]['slLikes'];
+              $idTopic = $arrPost[$i]['id_topic'];
+              $linkPostDetails = getLinkPostDetails($name.' '.$idPost);
+              echo '
+            <a href="post/details/'.$linkPostDetails.'" class="post-list__items">
+              <h3>'.$name.'</h3>
+                <div class="status">
+                  <div class="status-list">
+                    <i class="fas fa-thumps-up"></i>
+                    <p>'.$likes.'</p>
+                  </div>
+                  <div class="status-list">
+                    <i class="fas fa-fw fa-reply"></i>
+                    <p>'.$cm.'</p>
+                  </div>
+                  <div class="status-list">
+                    <i class="far fa-eye"></i>
+                    <p>'.$views.'</p>
+                  </div>
+                </div>
+            </a>
+          ';
+            }
+          ?>
         </div>
       </div>
       <div class="slider__questions">

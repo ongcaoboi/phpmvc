@@ -84,34 +84,56 @@
   </div>
 </div>
 
-<script>
+<?php
+if(isset($_SESSION['user'])){
+  echo '
+  <script>
   $(document).ready(function(){
-    $('.btn__create-topic').on("click", function (){
+    $(".btn__create-topic").on("click", function (){
       let a = document.querySelector(".form__create-topic");
       a.classList.toggle("form__create-topic-1");
     });
-    $('.btn__create-close').on("click", function (){
+    $(".btn__create-close").on("click", function (){
       let a = document.querySelector(".form__create-topic");
       a.classList.toggle("form__create-topic-1");
     });
-    $('#create_').on("click", function (){
-      var name = $('#name_').val();
+    $("#create_").on("click", function (){
+      var name = $("#name_").val();
       if(name == ""){
         alert("Vui lòng nhập tên chủ để");
         return;
       }
       $.ajax({
-        url: 'Topic/createTopic',
-        type: 'POST',
+        url: "Topic/createTopic",
+        type: "POST",
         data: {
-          'name': name
+          "name": name
         },
         success: function (response){
-          alert(response);
+          var rs = JSON.parse(response);
+          alert(rs.messenger);
+          if(rs.position == 1){
+            location.reload();
+          }
         }
       });
     });
   });
 </script>
-
+  ';
+}else{
+  echo '
+  <script>
+  $(document).ready(function(){
+    $(".btn__create-topic").on("click", function (){
+      var r = confirm("Vui lòng đăng nhập để sử dụng chức năng này!");
+      if(r){ 
+        window.location.href = "/Login";
+      }
+    });
+  });
+</script>
+  ';
+}
+?>
 <?php require_once 'Views/includes/footer.php' ?>
