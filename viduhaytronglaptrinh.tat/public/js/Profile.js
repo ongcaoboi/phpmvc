@@ -1,9 +1,5 @@
-console.log("đã nhận");
-
-
 function doimatkhau(){
     
-    console.log("đã click");
     var a = document.querySelector("#container_pass");
     a.classList.toggle("container_show");
 }
@@ -37,7 +33,6 @@ function doimatkhau1(){
 
 
 function doitenhienthi(){
-    console.log("đã click");
     var a = document.querySelector("#container_chgDisplayName");
     a.classList.toggle("container_show");
 }
@@ -75,7 +70,6 @@ function chgDisplayName1(){
 
 function doiimg(){
     
-    console.log("đã click");
     var a = document.querySelector("#container_chgImage");
     a.classList.toggle("container_show");
 }
@@ -87,17 +81,72 @@ function chgImage1(){
 
 
 function quit2(){
-    console.log("đã click");
     var a = document.querySelector("#container_pass");
     a.classList.toggle("container_show");
 }
 function quit1(){
-    console.log("đã click");
     var a = document.querySelector("#container_chgImage");
     a.classList.toggle("container_show");
 }
 function quit(){
-    console.log("đã click");
     var a = document.querySelector("#container_chgDisplayName");
     a.classList.toggle("container_show");
+}
+$('#upload').on('click', function () {
+    var file_data = $('#file').prop('files')[0];
+    var type = file_data.type;
+    var match = ["image/gif", "image/png", "image/jpg"];
+    if (type == match[0] || type == match[1] || type == match[2]) {
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        $.ajax({
+            url: 'profile/doiimg',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (response) {
+                var rs = JSON.parse(response);
+                alert(rs.messenger);
+                if(rs.position == 1){
+                    window.location.href = "./profile";
+                }
+            }
+        });
+    } else {
+        $('#file').val('');
+    }
+    return false;
+});
+function doiimg_(){    
+    var file_data = $('#file').prop('files')[0];
+    var type = file_data.type;
+    var match = ["image/gif", "image/png", "image/jpg",];
+    console.log("123");
+    
+    if (type == match[0] || type == match[1] || type == match[2]) {
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        console.log("abc");
+        $.ajax({
+            url: './Profile/doiimg',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (response) {
+                var rs = JSON.parse(response);
+                alert(rs.messenger);
+                console.log(rs);
+            }
+        });
+    } else {
+        alert("chỉ được upload file ảnh");
+        $('#file').val('');
+    }
+    return false;
 }

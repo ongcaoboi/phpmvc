@@ -171,6 +171,7 @@ body {
 
 .header__btn-account,
 .header__btn-write {
+	position: relative;
 	color: white;
 	font-size: 1.6rem;
 	background-color: transparent;
@@ -242,6 +243,7 @@ body {
 .header__btn-account,
 .header__search,
 .header__btn-write {
+	cursor: pointer;
 	display: inline-flex;
 }
 .header__btn-menu:hover,
@@ -341,6 +343,29 @@ body {
 	position: relative;
 	top: 30px;
 	margin: 0 auto;
+}
+.container__sidebar-write {
+	width: 15rem;
+	height: 8rem;
+	background-color: beige;
+	position: absolute;
+	display: none;
+	top: 47px;
+	left: -110px;
+	flex-direction: column;
+	/* display: none; */
+}
+.container__sidebar-write::before {
+	position: absolute;
+	width: 100%;
+	height: 30%;
+	top: -20%;
+	content: "";
+	display: block;
+}
+.header__btn-write:hover .container__sidebar-write{
+	display: block;
+	display: flex;
 }
 .container__sidebar-info {
 	margin-top: 15px;
@@ -663,6 +688,19 @@ footer .footer__container .noi-dung.about p {
 .btn--success-1:active {
 	background: #3c89ef;
 	box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.write {
+	margin-top: 0;
+	text-decoration: none;
+	text-align: center;
+	align-items: center;
+	padding: 0;
+	display: block;
+	width: 100%;
+	border: 1px solid #888888;
+	border-radius: 1px;
+	height: 4rem;
 }
 @media (max-width: 768px) {
 	footer {

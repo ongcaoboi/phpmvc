@@ -156,3 +156,10 @@
 .container_show {
     display: block;
 }
+.container_change form .form-group button {
+  margin-left: 40%;
+  margin-top: 30px;
+}
+.form-group {
+  text-align: center;
+}

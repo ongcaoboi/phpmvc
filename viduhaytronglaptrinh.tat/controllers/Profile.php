@@ -59,6 +59,7 @@ class Profile extends Controller {
                         'name' => is_null($result['user_display_name'])?$result['user_name']:$result['user_display_name'],
                         'img' => is_null($result['user_image'])?'public\img\user.png':$result['user_image'],
                     );
+                    $model->disConnect();
                     echo json_encode(array(
                         'position' => '1',
                         'messenger' => 'Đổi tên hiển thị thành công!'
@@ -98,7 +99,80 @@ class Profile extends Controller {
             die;
         }
     }
-    
+    function doiimg(){
+        if(!isset($_SESSION['user'])){
+            $this->view("PageError");
+            die;
+        }
+        if (isset($_POST) && !empty($_FILES['file'])) {
+            
+            $duoi = explode('.', $_FILES['file']['name']); // tách chuỗi khi gặp dấu .
+            $duoi = $duoi[(count($duoi) - 1)]; //lấy ra đuôi file
+            $maxfilesize = 1048576;
+            if($_FILES['file']['size'] > $maxfilesize){
+                echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Kích cỡ file không được quá 1 megabyte!'
+                ));
+            die;
+            }
+            if(!getimagesize($_FILES['file']["tmp_name"])){
+                echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Chỉ được upload ảnh!'
+                ));
+                die;
+            }
+            // Kiểm tra xem có phải file ảnh không
+            if ($duoi == 'jpg' || $duoi == 'png' || $duoi == 'gif' || $duoi == 'jpeg') {
+                $userInfo = $this->model("ProfileModel")->getUser($_SESSION['user']['id']);
+                $userName = $userInfo['user_name'];
+                $userId = $userInfo['id_user'];
+                $fileName = $userName.'.'.$duoi;
+                $url = './public/user/'.$userName.'/display_img/'.$fileName;
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $url)) {
+                    // Nếu thành công
+                    if($this->model("ProfileModel")->doiImage($userId, $url)){
+                        $model = $this->model('LoginModel');
+                        $result = $model->login($userInfo['user_name']);
+                        $_SESSION['user'] = array(
+                            'id' => $result['id_user'],
+                            'name' => is_null($result['user_display_name'])?$result['user_name']:$result['user_display_name'],
+                            'img' => is_null($result['user_image'])?'public\img\user.png':$result['user_image'],
+                        );
+                        $model->disConnect();
+                        echo json_encode(array(
+                            'position' => '1',
+                            'messenger' => 'Đổi ảnh thành công!'
+                        ));
+                    }else{
+                        echo json_encode(array(
+                            'position' => '0',
+                            'messenger' => 'Đổi ảnh thất bại!'
+                        ));
+                        die; //in ra thông báo + tên file
+                    }
+                } else { // nếu không thành công
+                    echo json_encode(array(
+                            'position' => '0',
+                            'messenger' => 'Upload file thất bại!'
+                        ));
+                    die; // in ra thông báo
+                }
+            } else { 
+                echo json_encode(array(
+                        'position' => '0',
+                        'messenger' => 'Chỉ được upload ảnh!'
+                    ));
+                die; // in ra thông báo
+            }
+        } else {
+            echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Đã có lỗi xảy ra!'
+                ));
+        }
+    }
 }
 
 ?>

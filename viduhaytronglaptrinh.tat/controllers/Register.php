@@ -57,6 +57,9 @@ class Register extends Controller {
         if(!empty($result) && $result['name']==$name && $result['ma']==$param){
             if($this->model("RegisterModel")->createUser($result['name'],$result['email'],$result['pass'])){
                 $this->model("RegisterModel")->deleteTKCho($name);
+                mkdir('public/user/'.$name.'');
+                mkdir('public/user/'.$name.'/display_img');
+                mkdir('public/user/'.$name.'/source');
                 echo '<p>đã xác thực tài khoản thành công<p>
             <p><a href="/Login">Bấm vào đây để đăng nhập</a><p><br>';
             }else{

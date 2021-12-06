@@ -36,6 +36,7 @@ class ProfileModel extends DB {
         $this->disConnect();
         return $kq;
     }
+    
 }
 
 ?>

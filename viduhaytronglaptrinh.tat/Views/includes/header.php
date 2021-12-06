@@ -58,9 +58,18 @@
                             <label for="check-search" class="btn-search__mobile">
                                 <i class="fas fa-search"></i>
                             </label>
-                            <button class="header__btn-write">
+                            <div class="header__btn-write">
                                 <i class="fa fa-pen"></i>
-                            </button>
+                                <div class="container__sidebar-write">
+                                    <a href="post/write"><button class="btn btn--success write">
+                                    <span>Viết bài</span>
+                                </button></a>
+                                    <a href="question/write">
+                                    <button class="btn btn--success write">
+                                    <span>Đặt câu hỏi</span>
+                                </button></a>
+                                </div>
+                            </div>
                         <div class="header__btn-account">
                             <img src="'.$user_img.'" alt="profile_pic" class="header__profile-img">
                             <p>'.$_SESSION['user']['name'].'</p> 
