@@ -35,7 +35,6 @@ $(document).ready(function(){
       }
     });
   });
-    
   function getPageComment(){
     $.ajax({
       url: 'post/getComment',

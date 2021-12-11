@@ -65,3 +65,13 @@
 .btn-w:hover{
   background-color: thistle;
 }
+#file {
+  width: 50%;
+  height: 30px;
+  font-size: 18px;
+}
+#topic {
+  width: 50%;
+  height: 30px;
+  font-size: 18px;
+}

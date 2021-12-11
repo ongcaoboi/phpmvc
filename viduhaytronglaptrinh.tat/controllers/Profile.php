@@ -168,9 +168,9 @@ class Profile extends Controller {
             }
         } else {
             echo json_encode(array(
-                    'position' => '0',
-                    'messenger' => 'Đã có lỗi xảy ra!'
-                ));
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra!'
+            ));
         }
     }
 }

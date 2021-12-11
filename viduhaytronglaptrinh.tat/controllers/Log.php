@@ -41,11 +41,13 @@ class Log extends Controller {
 
         }
     }
+    function date(){
+        echo time();
+    }
     function insertdata($num){
         $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, 'test_1_vd_hoc_lt')
         or die("Connect to database is failed");
         mysqli_query($conn, "set_names 'utf8'");
-        mysqli_fetch_assoc();
         // for($i = 0; $i<=$num; $i++){
         //     $time1 = date('Y/m/d H:i:s');
         //     $time2 = date('Y/m/d H:i:s');

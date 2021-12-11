@@ -120,33 +120,33 @@ $('#upload').on('click', function () {
     }
     return false;
 });
-function doiimg_(){    
-    var file_data = $('#file').prop('files')[0];
-    var type = file_data.type;
-    var match = ["image/gif", "image/png", "image/jpg",];
-    console.log("123");
+// function doiimg_(){    
+//     var file_data = $('#file').prop('files')[0];
+//     var type = file_data.type;
+//     var match = ["image/gif", "image/png", "image/jpg",];
+//     console.log("123");
     
-    if (type == match[0] || type == match[1] || type == match[2]) {
-        var form_data = new FormData();
-        form_data.append('file', file_data);
-        console.log("abc");
-        $.ajax({
-            url: './Profile/doiimg',
-            dataType: 'text',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            type: 'post',
-            success: function (response) {
-                var rs = JSON.parse(response);
-                alert(rs.messenger);
-                console.log(rs);
-            }
-        });
-    } else {
-        alert("chỉ được upload file ảnh");
-        $('#file').val('');
-    }
-    return false;
-}
+//     if (type == match[0] || type == match[1] || type == match[2]) {
+//         var form_data = new FormData();
+//         form_data.append('file', file_data);
+//         console.log("abc");
+//         $.ajax({
+//             url: './Profile/doiimg',
+//             dataType: 'text',
+//             cache: false,
+//             contentType: false,
+//             processData: false,
+//             data: form_data,
+//             type: 'post',
+//             success: function (response) {
+//                 var rs = JSON.parse(response);
+//                 alert(rs.messenger);
+//                 console.log(rs);
+//             }
+//         });
+//     } else {
+//         alert("chỉ được upload file ảnh");
+//         $('#file').val('');
+//     }
+//     return false;
+// }

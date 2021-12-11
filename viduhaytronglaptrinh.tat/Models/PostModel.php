@@ -135,4 +135,30 @@ class PostModel extends DB
       return $kq;
     }
   }
+  function getTopic(){
+    if($this->conn){
+      $sql = "SELECT * from topic";
+      $kq = $this->fetch_assoc($sql, 0);
+      $this->disConnect();
+      return $kq;
+    }
+  }
+  function createPost($idTopic, $idUser, $postTitle, $postContent, $postSource){
+    if($this->conn){
+      $time = date('Y/m/d H:i:s');
+      $sql = "INSERT INTO `post` (`source_code`, `id_post`, `id_topic`, `id_user`, `post_title`, `post_content`, `post_date_created`, `post_views`) VALUES ('{$postSource}', NULL, '{$idTopic}', '{$idUser}', '{$postTitle}', '{$postContent}', '{$time}', '0')";
+      $kq = $this->query($sql);
+      $this->disConnect();
+      return $kq;
+    }
+  }
+  function viewPost($id, $view){
+    if($this->conn){
+      $view++;
+      $sql = "UPDATE post set post_views='{$view}' where id_post='{$id}'";
+      $kq = $this->query($sql);
+      $this->disConnect();
+      return $kq;
+    }
+  }
 }

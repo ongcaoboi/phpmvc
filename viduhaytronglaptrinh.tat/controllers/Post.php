@@ -43,12 +43,64 @@ class Post extends Controller {
         }
     }
     function write(){
-        // if(!isset($_SESSION['user'])){
-        //     header('Location: /Login');
-        //     die;
-        // }
+        if(!isset($_SESSION['user'])){
+            header('Location: /Login');
+            die;
+        }
+        $this->dl['listTopic'] = $this->model("PostModel")->getTopic();
         $this->title = "Viết bài";
         $this->view("PostWrite");
+    }
+    function postWrite(){
+        if(!isset($_SESSION['user'])){
+            $this->view("PageError");
+            die;
+        }
+        if(isset($_POST['title']) || isset($_POST['data']) || isset($_POST['topic']) || !empty($_FILES['file'])){
+            $duoi = explode('.', $_FILES['file']['name']); // tách chuỗi khi gặp dấu .
+            $duoi = $duoi[(count($duoi) - 1)]; //lấy ra đuôi file
+            $maxfilesize = 1048576;
+            if($_FILES['file']['size'] > $maxfilesize){
+                echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Kích cỡ file không được quá 1 megabyte!'
+                ));
+            die;
+            }
+            $userInfo = $this->model("ProfileModel")->getUser($_SESSION['user']['id']);
+            $userName = $userInfo['user_name'];
+            $userId = $userInfo['id_user'];
+            $postTitle = $_POST['title'];
+            $title_ = relayVNM($postTitle);
+            $fileName = $title_.'.'.$duoi;
+            $url = 'public/user/'.$userName.'/source/'.$fileName;
+            $idTopic = $_POST['topic'];
+            $postData = addslashes($_POST['data']);
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $url)) {
+                if($this->model('PostModel')->createPost($idTopic, $userId, $postTitle, $postData, $url)){
+                    echo json_encode(array(
+                        'position' => '1',
+                        'messenger' => 'Tạo bài vết thành công!'
+                    ));
+                }else{
+                    echo json_encode(array(
+                        'position' => '0',
+                        'messenger' => 'Đã có lỗi xảy ra 1!'
+                    ));
+                }
+            }else{
+                echo json_encode(array(
+                    'position' => '0',
+                    'messenger' => 'Đã có lỗi xảy ra 2!'
+                ));
+            }
+            
+        }else{
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra 3!'
+            ));
+        }
     }
     function details($str = null) {
         if(!is_string($str)){
@@ -68,6 +120,7 @@ class Post extends Controller {
             $model->disConnect();
             die;
         }
+        $this->model('PostModel')->viewPost($idPost ,$result['post_views']);
         $this->title = $result['post_title'];
         $this->dl['postDetails'] = $result;
         $this->dl['infoUserPost'] = $this->model('PostModel')->getInfoUserPost($result['id_user']);
@@ -99,7 +152,7 @@ class Post extends Controller {
         if(!is_numeric($page)|| $page <= 0){
             $page = 1;
         }
-        $sodong = 10;
+        $sodong = 13;
         $model = $this->model("PostModel");
         $sl = $model->getNumPost();
         if($sl['sl']%$sodong == 0){
@@ -145,7 +198,7 @@ class Post extends Controller {
         if(!is_numeric($page)|| $page <= 0){
             $page = 1;
         }
-        $sodong = 10;
+        $sodong = 13;
         $model = $this->model("PostModel");
         $sl = $model->getNumYourPost($_SESSION['user']['id']);
         if($sl['sl']%$sodong == 0){

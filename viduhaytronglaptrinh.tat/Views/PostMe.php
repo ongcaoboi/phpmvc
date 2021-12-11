@@ -67,6 +67,7 @@
              $title = $arr[$i]['post_title'];
              $topic = $arr[$i]['topic_name'];
              $content = substr($arr[$i]['post_content'],0,200)."...";
+             $content = strip_tags($content);
              $like = $arr[$i]['slLikes'];
              $comment = $arr[$i]['slComment'];
              $view = $arr[$i]['post_views'];

@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="public/css/post.css">
 <link rel="stylesheet" href="public/css/postDetail.css">
 <script src="public/js/postDetail.js"></script>
+<script src="public/ckeditor/ckeditor.js"></script>
 
 <?php
 $arr = $this->dl['postDetails'];
@@ -16,6 +17,7 @@ $like = $arr['slLikes'];
 $comment = $arr['slComment'];
 $view = $arr['post_views'];
 $time = $arr['post_date_created'];
+$sourceCode = DOMAIN.$arr['source_code'];
 
 $arrUser = $this->dl['infoUserPost'];
 $idUserPost = $arrUser['id'];
@@ -82,21 +84,31 @@ $arrPost = $this->dl['postLikeTitle'];
 
 
         <div id="content-post" class="content__list">
+
           <?php
           echo $content;
-          if(isset($_SESSION['user'])){
-            echo '
+          echo ' 
           <div class="comment__report">
             <div></div>
-            <div>
+          ';
+          if(!$sourceCode == ""){
+            echo '
+              <a href="'.$sourceCode.'" download id="download">
+                <i class="fas fa-download"></i>
+                Tải source code
+              </a>
+            ';
+          }
+          if(isset($_SESSION['user'])){
+            echo '
               <button>
                 <i class="far fa-flag"></i>
                 Báo cáo
               </button>
-            </div>
-          </div>';
+              ';
           }
           ?>
+          </div>
         </div>
 
         <!-- Mở đàu bình luận -->
@@ -249,6 +261,5 @@ $arrPost = $this->dl['postLikeTitle'];
     </div>
   </div>
 </div>
-
 
 <?php require_once 'Views/includes/footer.php' ?>

@@ -182,6 +182,7 @@
             </div>
         </header>
         <div class="container">
+            <button id="btn_go_to_top" title="Go to top">Back To Top</button>
             <div class="container__sidebar">
                 <nav class="container__sidebar-menu">
                     <?php

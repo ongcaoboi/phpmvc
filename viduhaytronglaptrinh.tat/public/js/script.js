@@ -1,4 +1,22 @@
 $(document).ready(function() {
+    window.onscroll = function() {scrollFunction()};
+    // khai báo hàm scrollFunction
+    function scrollFunction() {
+        // Kiểm tra vị trí hiện tại của con trỏ so với nội dung trang
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            //nếu lớn hơn 20px thì hiện button
+            document.getElementById("btn_go_to_top").style.display = "block";
+        } else {
+             //nếu nhỏ hơn 20px thì ẩn button
+            document.getElementById("btn_go_to_top").style.display = "none";
+        }
+    }
+    //gán sự kiện click cho button
+    document.getElementById('btn_go_to_top').addEventListener("click", function(){
+        //Nếu button được click thì nhảy về đầu trang
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
     var btnMenu = document.querySelector("#btn-menu");
     var containerSidebar = document.querySelector(".container__sidebar");
     var containerMain = document.querySelector(".container__main");

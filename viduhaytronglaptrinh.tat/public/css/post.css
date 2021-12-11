@@ -229,7 +229,6 @@ select {
 .topics__header {
   background-color: aquamarine;
 }
-
 @media  (max-width: 768px){ 
   .post__list {
     width: 100%;
