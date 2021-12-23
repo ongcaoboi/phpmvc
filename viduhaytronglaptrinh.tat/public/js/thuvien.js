@@ -50,3 +50,20 @@ function thayDoiKyTuDacBiet(str){
   str = str.replace("<", "&lt;");
   return str;
 }
+
+function search(){
+  var keyword = document.getElementById('keyword_').value;
+  if(keyword == ''){
+    alert('Vui lòng nhập từ khoá!');
+    return false;
+  }
+  window.location.href = './Search/'+keyword;
+}
+function search__(){
+    var keyword = document.getElementById('keyword__').value;
+    if(keyword == ''){
+      alert('Vui lòng nhập từ khoá!');
+      return false;
+    }
+    window.location.href = './Search/'+keyword;
+}

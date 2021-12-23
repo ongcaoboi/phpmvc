@@ -40,6 +40,7 @@
              $title = $arr[$i]['post_title'];
              $topic = $arr[$i]['topic_name'];
              $content = substr($arr[$i]['post_content'],0,200)."...";
+             $content = strip_tags($content);
              $like = $arr[$i]['slLikes'];
              $comment = $arr[$i]['slComment'];
              $view = $arr[$i]['post_views'];
@@ -49,11 +50,11 @@
          echo '
          <div class="content__list">
            <div class="media">
-             <a href="'.$idUser.'" class="media-left">
+             <a href="profile/user/'.$idUser.'" class="media-left">
                <img src="'.$img.'" alt="ảnh">
              </a>
              <div class="media-body">
-               <a href="'.$idUser.'" class="user">
+               <a href="profile/user/'.$idUser.'" class="user">
                  '.$name.'
                </a>
                <a href="post/details/'.$linkDetalis.'" class="post">

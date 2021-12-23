@@ -27,8 +27,8 @@
             <div class="search-input__mobile">
                 <label for="check-search" class="lopphu">
                 </label>
-                <input class="input__mobile" type="text" placeholder="Nhập nội dung">
-                <input class="input__btn" type="button" value="Tìm">
+                <input class="input__mobile" type="text" id="keyword__" placeholder="Nhập nội dung">
+                <input class="input__btn" type="button" onclick="search__()" value="Tìm">
             </div>
             <div class="grid">
                 <nav class="header__navbar">
@@ -37,13 +37,13 @@
                             <i class="fas fa-bars f-9"></i>
                         </button>
                         <a href="" class="header__title">
-                            Code <p>EX</p>
+                            <img src="public/gif/CodeEX.gif" alt="Logo">
                         </a>
                     </div>
                     <div class="header__navbar-right">
                         <div class="header__search">
-                            <input class="header__search-input" type="text" placeholder="Tìm kiếm">
-                                <button class="sbutton">
+                            <input class="header__search-input" id="keyword_" type="text" placeholder="Tìm kiếm">
+                                <button class="sbutton" onclick="search()">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </input>
@@ -125,7 +125,7 @@
                                 $user_img = is_null($_SESSION['user']['img'])?"public/img/user-3.png":$_SESSION['user']['img'];
                                 echo '
                                 <a href="" class="header__title">
-                                    Code <p>EX</p>
+                                    <img src="public/gif/CodeEX_2.gif" alt="Logo">
                                 </a>
                                 <div class="profile-mobile">
                                     <div class="profile_img-mobile">
@@ -140,7 +140,7 @@
                             }else{
                                 echo '
                                 <a href="" class="header__title">
-                                    Code <p>EX</p>
+                                    <img src="public/gif/CodeEX_2.gif" alt="Logo">
                                 </a>
                             <div class="container__sidebar-profile">
                                 <div class="container__sidebar-info1">
@@ -172,6 +172,17 @@
                                 <li class="container__sidebar-item">
                                     <a href="./Feedback" id="nav-link_5" class="container__sidebar-link">Phản hồi</a>
                                 </li>
+                                <?php
+                                    if(isset($_SESSION['user'])){
+                                        if($_SESSION['position'] == "2"){
+                                            echo '
+                                <li class="container__sidebar-item">
+                                    <a href="./admin" id="nav-link_6" class="container__sidebar-link">Quản trị</a>
+                                </li>
+                                            ';
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </nav>
                     </div>
@@ -230,6 +241,17 @@
                         <li class="container__sidebar-item">
                             <a href="./Feedback" id="nav-link5" class="container__sidebar-link">Phản hồi</a>
                         </li>
+                    <?php
+                        if(isset($_SESSION['user'])){
+                            if($_SESSION['position'] == "2"){
+                                echo '
+                        <li class="container__sidebar-item">
+                            <a href="./admin" id="nav-link6" class="container__sidebar-link">Quản trị</a>
+                        </li>
+                                ';
+                            }
+                        }
+                    ?>
                     </ul>
                 </nav>
             </div>

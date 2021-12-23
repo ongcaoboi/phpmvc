@@ -1,0 +1,134 @@
+.TamNhin {
+  height: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #F5F5F5;
+  background: linear-gradient( 135deg,#2095f3 0%,#26c6da 100%);
+  margin-bottom:3px;
+  clear: both;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  text-align: center;
+}
+
+.TamNhin h1{    
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.TamNhin h2{    
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.NguoiSangLap {
+  height: 560px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #F5F5F5;
+  background: linear-gradient( 135deg,#2095f3 0%,#26c6da 100%);
+  margin-bottom:3px;
+  clear: both;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  color: white;
+}
+
+.NguoiSangLap h1{
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.NguoiSangLap .ContainerNsl {
+  height: 130px;
+  width: 70%;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #F5F5F5;
+  background: white;
+  margin-bottom:3px;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  border-radius: 10px;
+  color: black;   
+  margin-left: 15%;
+}
+
+.NguoiSangLap .ContainerNsl h2{
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.NguoiSangLap .ContainerNsl h3{
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.NguoiSangLap .ContainerNsl .left{
+  float : left;
+  padding-left: none;
+  width: 50%;
+}
+
+.NguoiSangLap .ContainerNsl .left i{
+  margin-left: 30%;
+  margin-right: 10px;
+  color: black;
+}
+
+.NguoiSangLap .ContainerNsl .right{
+  display: flex;
+  float: right;
+  padding-right: 20%;
+  width: 50%;
+}
+.NguoiSangLap .ContainerNsl .right i{
+  margin-right: 10px;
+}
+
+.LienHe {
+  height: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #F5F5F5;
+  background :linear-gradient( 135deg,#2095f3 0%,#26dac1 100%);
+  margin-bottom:3px;
+  clear: both;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+}
+
+.LienHe h1{
+  color: white;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.LienHe p{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.LienHe .btnLienHe{
+  text-align: center;
+}
+.btnLienHe > a  {
+  text-decoration: none;
+}
+
+@media  (max-width: 768px){
+  .TamNhin{
+      height: 250px;
+  }
+  .NguoiSangLap .ContainerNsl{
+      height: 150px;
+  }
+  .NguoiSangLap .ContainerNsl .left i{
+      margin-left: 0%;
+  }
+}

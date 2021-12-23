@@ -62,7 +62,9 @@
     </section>
         <div id="load-page" class="load__page">
             <div id="ring" class="ring"></div>
-            <div id="show__messenger" class="show__messenger"></div>
+            <div id="show__messenger" class="show__messenger">
+                <a href="/register" class="btn_ok">OK!</a>
+            </div>
         </div>
 </body>
 

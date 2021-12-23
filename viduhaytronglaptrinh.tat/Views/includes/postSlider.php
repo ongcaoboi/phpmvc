@@ -68,8 +68,9 @@
               $cm = $arrQuestion[$i]['slTraLoi'];
               $views = $arrQuestion[$i]['views'];
               $idQuestion = $arrQuestion[$i]['id'];
+              $linkQuestionDetails = getLinkPostDetails($name.' '.$idQuestion);
               echo '
-            <a href="" class="questions-list__items">
+            <a href="/Questions/details/'.$linkQuestionDetails.'" class="questions-list__items">
               <h3>'.$name.'</h3>
                 <div class="status">
                   <div class="status-list">

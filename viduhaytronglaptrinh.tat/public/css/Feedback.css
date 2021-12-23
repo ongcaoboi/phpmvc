@@ -1,0 +1,161 @@
+.Feedback {
+  height: 500px;
+  background :linear-gradient( 135deg,#2095f3 0%,#daa226 100%);
+}
+
+
+.Feedback .left {
+  float :left;
+  padding-top: 30px;
+  position: relative;
+  width: 47%;
+}
+
+.Feedback .right{
+  float :right;
+  padding-top: 30px;
+  position: relative;
+  width: 47%;
+}
+
+
+.containerLh {
+  height: 50px;
+  margin-left: 5px    ;
+  border: 1px solid #F5F5F5;
+  background: Black;
+  margin-bottom:3px;
+  font-size: 16px;
+  border-radius: 3px;
+  color: white  ;
+}
+
+.containerLh H1{
+  font-weight: 500;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+.containerLh H1 i{
+  margin-right: 30px;
+  padding-right: 30px;
+}
+
+
+.content {
+  text-align: left;
+}
+
+.content h2{
+  text-align: center;
+  color: #333;;
+  margin-top:20px;
+  margin-bottom: 40px;
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.content p{
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: flex;
+  color : black;
+  letter-spacing: 1px;
+  margin-left: 10%;
+  margin-top: 20px;
+  white-space: pre;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+.content p i{
+  color: black;
+  margin-right: 10px;
+}
+
+.content p input{
+  margin-left: auto;
+  width: 10cm;
+  border-radius: 5px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.content .noidung p{
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: flex;
+  color : black;
+  letter-spacing: 1px;
+  margin-left: 10%;
+  margin-top: 20px;
+  white-space: pre;
+  font-family: 'Google Sans',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+.content .noidung p textarea {
+  margin-left: auto;
+  border-radius: 5px;
+  width: 10cm;
+  margin-right: 10px;
+}
+
+.content .btnSend{
+  text-align: center;
+  margin-left: 40%;
+}
+
+.noidung {
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.noidung > input , .noidung > textarea {
+  font-size: 18px;
+  width: 70%;
+}
+.btnSend {
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.noidung b {
+  margin-top: 8px;
+  padding-left: 40px;
+}
+@media  (max-width: 768px){
+  .Feedback {
+      height: 840px;
+  }
+
+  .containerLh {
+      height: 70px;
+      width: auto;
+      margin-left: 0px;
+  }
+  
+  .containerLh H1{
+      margin-right: 5px;
+  }
+
+  .content p input {
+      width: auto;
+  }
+
+  .content .noidung p textarea {
+      width: 5cm;
+  }
+
+  .Feedback .left {
+      float :none;
+      width: 100%;
+  }
+  .Feedback .right {
+      float :none;
+      width: 100%;
+  }
+}

@@ -273,7 +273,7 @@ body {
 	top: 120%;
 	display: none;
 	justify-content: center;
-	animation: fadeIn ease-in 3s;
+	animation: fadeIn ease-in 0.5s;
 }
 .header__account-menu button {
 	margin: 1%;
@@ -479,6 +479,7 @@ body {
 }
 
 footer {
+	z-index: -1;
 	position: relative;
 	bottom: 0;
 	width: 100%;

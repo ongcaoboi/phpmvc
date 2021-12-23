@@ -63,5 +63,14 @@ $(document).ready(function() {
             var con = document.querySelector("#nav-link_5");
             con.classList.toggle("active-menu");
             break;
+        case "admin":
+            var con = document.querySelector("#nav-link6");
+            con.classList.toggle("active-menu");
+            var con = document.querySelector("#nav-link_6");
+            con.classList.toggle("active-menu");
+            break;
     }
+    $('#write-post').on('click', function () {
+        return confirm('Vui lòng đăng nhập để sử dụng chức năng này!');
+    });
 });

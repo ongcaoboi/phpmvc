@@ -95,8 +95,8 @@ function quit(){
 $('#upload').on('click', function () {
     var file_data = $('#file').prop('files')[0];
     var type = file_data.type;
-    var match = ["image/gif", "image/png", "image/jpg"];
-    if (type == match[0] || type == match[1] || type == match[2]) {
+    var match = ["image/gif", "image/png", "image/jpg", "image/jpeg"];
+    if (type == match[0] || type == match[1] || type == match[2] || type == match[3]) {
         var form_data = new FormData();
         form_data.append('file', file_data);
         $.ajax({
@@ -111,11 +111,14 @@ $('#upload').on('click', function () {
                 var rs = JSON.parse(response);
                 alert(rs.messenger);
                 if(rs.position == 1){
+                    window.location.href = "./home";
                     window.location.href = "./profile";
                 }
+                $('#file').val('');
             }
         });
     } else {
+        alert('Chỉ được upload file (gif, jpg, png');
         $('#file').val('');
     }
     return false;

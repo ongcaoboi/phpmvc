@@ -1,0 +1,84 @@
+.search__header {
+  background-color: #040404;
+  height: 150px;
+  color: white;
+  padding: 50px;
+}
+.search__header h1 {
+  margin-bottom: 10px;
+}
+.search__body {
+  padding: 0px 50px;
+  width: 100%;
+}
+.search__body--input {
+  display: flex;
+  justify-content: space-between;
+}
+.search__body .search__body--input > input {
+  margin-top: 16px;
+  width: 90%;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 18px;
+}
+.search .search__body .search__body--input > button {
+  padding: 0;
+  width: calc(10% - 1px);
+  height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  align-items: center;
+}
+.search__content {
+  margin-bottom: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.search-menu {
+  margin-top: 16px;
+  width: 100%;
+  height: 40px;
+  background-color: #c3c9c9;
+  align-items: center;
+  display: flex;
+}
+.search-menu a {
+  cursor: pointer;
+  color: #575757;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+.search-menu a:hover {
+  background-color: white;
+}
+.search__menu-active {
+  background-color: white;
+}
+.search__content--active {
+  display: block;
+}
+.search__list {
+  padding: 10px;
+  display: none;
+}
+.search__list p {
+  font-weight: bold;
+}
+.search__list a {
+  font-weight: bold;
+  font-size: 20px;
+}
+.search__list a p {
+  padding: 5px 0;
+  display: inline-block;
+}
+.search__list a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .search__body {
+    padding: 20px 10px;
+  }
+}

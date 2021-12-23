@@ -38,7 +38,13 @@ $arrPost = $this->dl['postLikeTitle'];
       <p>Kho bài viết được chia sẻ bởi cộng đồng</p>
     </div>
     <div class="post__btn">
-      <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>
+      <?php 
+      if(isset($_SESSION['user'])){
+        echo '
+        <button class="btn--success-1"><a href="Post/write">Viết bài</a></button>';
+      }else echo '
+      <button class="btn--success-1"><a href="Post/write" id="write-post">Viết bài</a></button>';
+      ?>
     </div>
   </div>
   <div class="post__content">

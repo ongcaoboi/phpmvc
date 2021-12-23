@@ -35,6 +35,7 @@ class Login extends Controller {
                         'name' => is_null($result['user_display_name'])?$result['user_name']:$result['user_display_name'],
                         'img' => is_null($result['user_image'])?'public\img\user.png':$result['user_image'],
                     );
+                    $_SESSION['position'] = $result['user_position'];
                     //Huỷ kết nối
                     $model->disConnect();
                     //Lưu thông tin đăng nhập vào session
@@ -74,6 +75,7 @@ class Login extends Controller {
     function logout(){
         // huy các session 
         unset($_SESSION['user']);
+        unset($_SESSION['position']);
         //huỷ cookie
         setcookie( "cookie_account", "", time()- 60, "/");
         // chuyển hướng lại tới trang chủ
