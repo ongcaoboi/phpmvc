@@ -35,6 +35,46 @@ $(document).ready(function(){
       }
     });
   });
+  $('#btn_report').on('click', function(){
+    var ct_report = prompt("Mời nhập nội dung báo cáo!", "");
+    if(ct_report == null){
+      return;
+    }
+    if(ct_report == ""){
+      alert("Vui lòng nhập nội dung");
+      return;
+    }
+    $.ajax({
+      url: "post/report",
+      type: "post",
+      data: {
+        id: id_post,
+        content: ct_report
+      },
+      success: function(response){
+        let rs = JSON.parse(response);
+        alert(rs.messenger);
+      }
+    });
+  });
+  $('#btn_delete_post').on('click', function(){
+    if(confirm("Bạn có chắc chắn xoá bài viết này không")){
+      $.ajax({
+        url: "admin/deletePost",
+        type: "post",
+        data: {
+          id: id_post
+        },
+        success: function(response){
+          let rs = JSON.parse(response);
+          alert(rs.messenger);
+          if(rs.position == '1'){
+            window.location.href = "./post";
+          }
+        }
+      });
+    }
+  });
   function getPageComment(){
     $.ajax({
       url: 'post/getComment',
@@ -63,3 +103,22 @@ $(document).ready(function(){
     });
   }
 });
+function deleteComment(id){
+  if(confirm("Bạn có chắc chắn xoá bình luận này không")){
+    var id_comment = id;
+    $.ajax({
+      url: "admin/deleteComment",
+      type: "post",
+      data: {
+        id: id_comment
+      },
+      success: function(response){
+        let rs = JSON.parse(response);
+        alert(rs.messenger);
+        if(rs.position == '1'){
+          location.reload();
+        }
+      }
+    });
+  }
+}

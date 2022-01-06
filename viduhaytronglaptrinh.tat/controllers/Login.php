@@ -6,8 +6,8 @@ class Login extends Controller {
     function index(){
         if(isset($_COOKIE['cookie_account'])){
             $_SESSION['user'] = json_decode($_COOKIE['cookie_account']);
-            echo detailArr($_SESSION['user']);
-            exit;
+            // echo detailArr($_SESSION['user']);
+            // exit;
         }
         if(isset($_SESSION['user'])){ // Kiểm tra tồn tại session user thì chuyển hướng tới trang chủ
             header("location: /Home");

@@ -274,32 +274,65 @@ class Post extends Controller {
             $idUser = $result[$i]['id_user'];
             $img = $result[$i]['img'] == null ? 'public\img\user.png' : $result[$i]['img'];
             if(isset($_SESSION['user'])){
-                $arr['content'][$i] = '
-                <div class="post__comment--item">
-                  <a href="profile/user/'.$idUser.'" class="post__comment-left">
-                    <img src="'.$img.'" alt="ảnh">
-                    
-                  </a>
-                  <div class="post__comment-body">
-                    <div class="comment-body__user">
-                      <a href="profile/user/'.$idUser.'" class="user">'.$name.'</a>
-                      <p>'.$result[$i]['date'].'</p>
+                if($_SESSION['position'] == 2){
+                    $arr['content'][$i] = '
+                    <div class="post__comment--item">
+                    <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                        <img src="'.$img.'" alt="ảnh">
+                        
+                    </a>
+                    <div class="post__comment-body">
+                        <div class="comment-body__user">
+                        <a href="profile/user/'.$idUser.'" class="user">'.$name.'</a>
+                        <p>'.$result[$i]['date'].'</p>
+                        </div>
+                        <div class="comment-body__content">
+                        <p class="content">'.$result[$i]['content'].'</p>
+                        </div>
+                        
+                        <div class="comment__report">
+                        <div></div>
+                        <div>
+                            <button>
+                            <i class="far fa-flag"></i>
+                            Báo cáo
+                            </button>
+                            <button class="btn_delete_post" onclick="deleteComment('.$result[$i]['id'].')">
+                                <i class="far fa-trash-alt"></i>
+                            Xoá
+                            </button>
+                        </div>
+                        </div>
                     </div>
-                    <div class="comment-body__content">
-                      <p class="content">'.$result[$i]['content'].'</p>
+                    </div>';
+                }else{
+                    $arr['content'][$i] = '
+                    <div class="post__comment--item">
+                    <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                        <img src="'.$img.'" alt="ảnh">
+                        
+                    </a>
+                    <div class="post__comment-body">
+                        <div class="comment-body__user">
+                        <a href="profile/user/'.$idUser.'" class="user">'.$name.'</a>
+                        <p>'.$result[$i]['date'].'</p>
+                        </div>
+                        <div class="comment-body__content">
+                        <p class="content">'.$result[$i]['content'].'</p>
+                        </div>
+                        
+                        <div class="comment__report">
+                        <div></div>
+                        <div>
+                            <button>
+                            <i class="far fa-flag"></i>
+                            Báo cáo
+                            </button>
+                        </div>
+                        </div>
                     </div>
-                    
-                    <div class="comment__report">
-                      <div></div>
-                      <div>
-                        <button>
-                          <i class="far fa-flag"></i>
-                          Báo cáo
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>';
+                    </div>';
+                }
             }else{
                 $arr['content'][$i] = '
                 <div class="post__comment--item">
@@ -320,6 +353,32 @@ class Post extends Controller {
             }
         }
         echo json_encode($arr);
+    }
+    function report(){
+        // detailArr($GLOBALS);
+        // die;
+        if(!isset($_SESSION['user']) || !isset($_POST['id']) || !isset($_POST['content'])){
+            $this->view("PageError");
+            die;
+        }
+        if($_POST['content'] == "" || $_POST['content'] == null){
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra!'
+            ));
+            die;
+        }
+        if($this->model("PostModel")->report($_POST['id'], $_SESSION['user']['id'], $_POST['content'])){
+            echo json_encode(array(
+                'position' => '1',
+                'messenger' => 'Báo cáo bài viết thành công!'
+            ));
+        }else{
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra!'
+            ));
+        }
     }
 }
 

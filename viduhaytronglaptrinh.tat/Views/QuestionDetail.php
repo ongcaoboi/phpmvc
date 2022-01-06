@@ -1,6 +1,10 @@
 <?php require_once 'Views/includes/header.php' ?>
+
 <link rel="stylesheet" href="public/css/post.css" />
 <link rel="stylesheet" href="public/css/detailQuestion.css"/>
+
+<link rel="stylesheet" href="public/prism/prism.css">
+<script src="public/prism/prism.js"></script>
 
 <?php
 $arr = $this->dl['questionDetails'];
@@ -20,7 +24,7 @@ $postUserPost = $arrUser['post'];
 $questionUserPost = $arrUser['question'];
 $commentUserPost = $arrUser['comment'];
 
-//$arrQuestion = $this->dl['questionLikeTitle'];
+$arrQuestion = $this->dl['questionLikeTitle'];
 
 
 
@@ -32,7 +36,7 @@ $commentUserPost = $arrUser['comment'];
             <p>Chia sẻ kiến thức , cùng nhau phát triển</p>
         </div>
         <div class="header_button">
-        <button class="btn--success-1"><a href="">Đặt câu hỏi</a></button>
+        <button class="question_button btn--success-1"><a href="Questions/questionWrite">Đặt câu hỏi</a></button>
         </div>
     </div>
 
@@ -65,7 +69,7 @@ $commentUserPost = $arrUser['comment'];
                 </div>
             </div>';
             ?>
-            <div class="detail--content">
+            <div class="detail--content" id="detail--content">
                 <?php
                 echo $content;
                 echo '
@@ -73,13 +77,21 @@ $commentUserPost = $arrUser['comment'];
                     <div></div>
                 ';
                 if(isset($_SESSION['user'])){
+                  echo '
+                    <button id="btn_report">
+                      <i class="far fa-flag"></i>
+                      Báo cáo
+                    </button>
+                    ';
+                  if($_SESSION['position'] == "2"){
                     echo '
-                      <button>
-                        <i class="far fa-flag"></i>
-                        Báo cáo
-                      </button>
-                      ';
+                    <button id="btn_delete_question" class="btn_delete_post">
+                      <i class="far fa-trash-alt"></i>
+                      Xoá
+                    </button>
+                    ';
                   }
+                }
                   ?>
                 </div>
             </div>
@@ -123,39 +135,105 @@ $commentUserPost = $arrUser['comment'];
                     $name = $arrCmt[$i]['name'];
                     $imgg = $arrCmt[$i]['img'];
                     $idUser = $arrCmt[$i]['id_user'];
-                echo '    
-                <div class="post__comment" id="post_comment">
-                
-                    <div class="post__comment--item">
-                        <a href="profile/user/'.$idUser.'" class="post__comment-left">
-                            <img src="'.$imgg.'" alt="ảnh">
-                            
-                        </a>
-                        <div class="post__comment-body">
-                            <div class="comment-body__user">
-                            <a href="" class="user">'.$name.'</a>
-                            <p>'.$date.'</p>
+                    $idComment = $arrCmt[$i]['id'];
+
+                    if(isset($_SESSION['user'])){
+                        if($_SESSION['position'] == 2){
+                            echo '    
+                    <div class="abcxyz">
+                        <div class="post__comment" id="post_comment">
+                        
+                            <div class="post__comment--item">
+                                <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                                    <img src="'.$imgg.'" alt="ảnh">
+                                    
+                                </a>
+                                <div class="post__comment-body">
+                                    <div class="comment-body__user">
+                                    <a href="" class="user">'.$name.'</a>
+                                    <p>'.$date.'</p>
+                                    </div>
+                                    <div class="comment-body__content">
+                                    <p class="content">'.$contentCmt.'</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="comment-body__content">
-                            <p class="content">'.$contentCmt.'</p>
-                            </div>
-                            
-                            <div class="comment__report">
+                        </div>
+                        <div class="cmt--report">
                             <div></div>
                             <div>
                                 <button>
-                                <i class="far fa-flag"></i>
-                                Báo cáo
+                                    <i class="far fa-flag"></i>
+                                        Báo cáo
                                 </button>
-                            </div>
+                                
+                                <button class="btn_delete_post" onclick="deleteComment('.$idComment.')">
+                                    <i class="far fa-trash-alt"></i>
+                                Xoá
+                                </button>
                             </div>
                         </div>
                     </div>
-
-                </div>
-                ';
+                            ';
+                        }else{
+                            echo '    
+                            <div class="abcxyz">
+                                <div class="post__comment" id="post_comment">
+                                
+                                    <div class="post__comment--item">
+                                        <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                                            <img src="'.$imgg.'" alt="ảnh">
+                                            
+                                        </a>
+                                        <div class="post__comment-body">
+                                            <div class="comment-body__user">
+                                            <a href="" class="user">'.$name.'</a>
+                                            <p>'.$date.'</p>
+                                            </div>
+                                            <div class="comment-body__content">
+                                            <p class="content">'.$contentCmt.'</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cmt--report">
+                                    <div></div>
+                                    <div>
+                                        <button>
+                                            <i class="far fa-flag"></i>
+                                                Báo cáo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                                    ';
+                        }
+                    }else{
+                        echo '
+                        <div class="post__comment" id="post_comment">
+                        
+                            <div class="post__comment--item">
+                                <a href="profile/user/'.$idUser.'" class="post__comment-left">
+                                    <img src="'.$imgg.'" alt="ảnh">
+                                    
+                                </a>
+                                <div class="post__comment-body">
+                                    <div class="comment-body__user">
+                                    <a href="" class="user">'.$name.'</a>
+                                    <p>'.$date.'</p>
+                                    </div>
+                                    <div class="comment-body__content">
+                                    <p class="content">'.$contentCmt.'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                    }
                 }
                 ?>
+                            
+                        
+                
                 
             </div>
             
@@ -165,7 +243,7 @@ $commentUserPost = $arrUser['comment'];
             <?php 
             echo '
             <div class="infor--user">
-                <a href="profile/user/'.$idUserQuestion.'">
+                <a href="profile/user/'.$idUserQuestion.'" class="aa">
                     <img src="'.$imgUserQuestion.'" alt="ảnh">
                 </a>
                 <div class="detail">
@@ -187,17 +265,55 @@ $commentUserPost = $arrUser['comment'];
                     
                 </div>
             </div>
+              ';
+             ?>
             <div class="slider__questions">
-            </div>
+                <div class="questions__header">
+                <h3>Bài viết liên quan </h3>
+                </div>
             
-        </div>  ';
-        ?>
+                <div class="questions-list">
+
+                
+                    <?php
+                        for($i = 0; $i < count($arrQuestion); $i++){
+                        $title_ = $arrQuestion[$i]['question_title'];
+                        $id_ = $arrQuestion[$i]['id_question'];
+                        $linkDetails = getLinkPostDetails($title_.' '.$id_);
+                        echo '
+                            <a href="Questions/details/'.$linkDetails.'"             class="questions-list__items">
+                                <h3>'.$arrQuestion[$i]['question_title'].'</h3>
+                                <div class="status">
+                                    <div class="status-list">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <p>'.$arrQuestion[$i]['slLikes'].'</p>
+                                    </div>
+                                    <div class="status-list">
+                                        <i class="far fa-comments"></i>
+                                        <p>'.$arrQuestion[$i]['slComment'].'</p>
+                                    </div>
+                                    <div class="status-list">
+                                        <i class="far fa-eye"></i>
+                                        <p>'.$arrQuestion[$i]['question_views'].'</p>
+                                    </div>
+                                </div>
+                            </a>
+                            ';
+                        }
+                    ?>
+                
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
 
 $(document).ready(function(){
-
+    var a = window.location.href.split("/");
+    var a = a[a.length - 1].split("-");
+    var id_question = a[a.length -1];
     $('#btn_cmt_').on('click', function(){
         var content = $('#comment_text_').val();
         if(content == ""){
@@ -232,10 +348,67 @@ $(document).ready(function(){
             }
         });
     });
-    
+    $('#btn_delete_question').on('click', function(){
+        if(confirm("Bạn có chắc chắn xoá bài viết này không")){
+            $.ajax({
+                url: "admin/deleteQuestion",
+                type: "post",
+                data: {
+                    id: id_question
+                },
+                success: function(response){
+                    let rs = JSON.parse(response);
+                    alert(rs.messenger);
+                    if(rs.position == '1'){
+                        window.location.href = "./Questions";
+                    }
+                }
+            });
+        }
+    });
+    $('#btn_report').on('click', function(){
+        var ct_report = prompt("Mời nhập nội dung báo cáo!", "");
+        if(ct_report == null){
+            return;
+        }
+        if(ct_report == ""){
+            alert("Vui lòng nhập nội dung");
+            return;
+        }
+        $.ajax({
+            url: "questions/report",
+            type: "post",
+            data: {
+                id: id_question,
+                content: ct_report
+            },
+            success: function(response){
+                let rs = JSON.parse(response);
+                alert(rs.messenger);
+            }
+        });
+    });
 
 });
-
+function deleteComment(id){
+    if(confirm("Bạn có chắc chắn xoá bình luận này không")){
+        var id_comment = id;
+        $.ajax({
+        url: "admin/deleteComment",
+        type: "post",
+        data: {
+            id: id_comment
+        },
+        success: function(response){
+            let rs = JSON.parse(response);
+                alert(rs.messenger);
+            if(rs.position == '1'){
+                location.reload();
+            }
+        }
+        });
+    }
+}
 </script>
 
 <?php require_once 'Views/includes/footer.php' ?>

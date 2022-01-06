@@ -159,6 +159,23 @@ class QuestionModel extends DB {
       return $kq;
     }
   }
+  function createQuestion($idUser, $questionTitle, $questionContent){
+    if($this->conn){
+      $time = date('Y/m/d H:i:s');
+      $sql = "INSERT INTO `question` (`id_question`, `id_user`, `question_title`, `question_conntent`, `question_date_created`, `question_views`) VALUES (NULL, '{$idUser}', '{$questionTitle}', '{$questionContent}', '{$time}', '0')";
+      $kq = $this->query($sql);
+      $this->disConnect();
+      return $kq;
+    }
+  }
+  function report($id_question, $id_user,  $content){
+    if($this->conn){
+      $sql = "INSERT into report(id_report, id_user, id_post, id_question, report_content) values (NULL, '{$id_user}', NULL, '{$id_question}', '{$content}')";
+      $kq = $this->query($sql);
+      $this->disConnect();
+      return $kq;
+    }
+  }
 }
 
 ?>

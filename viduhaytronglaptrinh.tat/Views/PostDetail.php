@@ -107,11 +107,19 @@ $arrPost = $this->dl['postLikeTitle'];
           }
           if(isset($_SESSION['user'])){
             echo '
-              <button>
+              <button id="btn_report">
                 <i class="far fa-flag"></i>
                 Báo cáo
               </button>
               ';
+            if($_SESSION['position'] == "2"){
+              echo '
+              <button id="btn_delete_post" class="btn_delete_post">
+                <i class="far fa-trash-alt"></i>
+                Xoá
+              </button>
+              ';
+            }
           }
           ?>
           </div>
@@ -149,33 +157,6 @@ $arrPost = $this->dl['postLikeTitle'];
           <!-- Bắt đàu 1 bình luận -->
           <div class="post__comment" id="post_comment">
 
-            <!-- <div class="post__comment--item">
-              <a href="" class="post__comment-left">
-                <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
-                
-              </a>
-              <div class="post__comment-body">
-                <div class="comment-body__user">
-                  <a href="" class="user">
-                    Hello
-                  </a>
-                  <p>8 giờ trước</p>
-                </div>
-                <div class="comment-body__content">
-                  <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae soluta quos illum, reiciendis cupiditate ipsa molestias quae rerum quod? Velit possimus expedita facere, reprehenderit excepturi alias et dignissimos illum rem?</p>
-                </div>
-                
-                <div class="comment__report">
-                  <div></div>
-                  <div>
-                    <button>
-                      <i class="far fa-flag"></i>
-                      Báo cáo
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
           </div>
 
@@ -267,5 +248,6 @@ $arrPost = $this->dl['postLikeTitle'];
     </div>
   </div>
 </div>
+
 
 <?php require_once 'Views/includes/footer.php' ?>

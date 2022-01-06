@@ -1,0 +1,54 @@
+.container__main-content h1{
+    padding: 59px 50px;
+    display: flex;
+    color: aliceblue;
+    justify-content: space-between;
+    background-color: #040404;
+}
+.admin {
+    padding: 20px 50px;
+}
+.admin h2 {
+    padding: 10px 0;
+}
+.admin .manager__header {
+    display: flex;
+}
+.manager__header p {
+    padding: 10px;
+    font-weight: bold;
+}
+.manager__header select {
+    margin: 10px 0;
+}
+.post__table {
+    max-width: 1000px;
+    /* width: 100%; */
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 900px;
+}
+.post__table > table {
+    border-collapse: collapse;
+    /* width: 90%; */
+    min-width: 700px;
+}
+.post__table thead th {
+    border: 1px solid black;
+}
+table th, td {
+    text-align: left;
+    padding: 8px;
+}
+table tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+@media ( max-width: 768px) {
+    .container__main-content h1 {
+        padding: 59px 20px;
+    }
+    .admin {
+        padding: 20px;
+    }
+}

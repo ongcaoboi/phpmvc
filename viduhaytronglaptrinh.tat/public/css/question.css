@@ -11,9 +11,12 @@
 .top .header_button {
   margin: 60px;
 }
-
+.top .header_button button a {
+  color: white;
+  text-decoration: none;
+}
 .top .question_header{
-  margin: 0 60px;
+  margin: 60px;
 }
 .top .question_header p{
   margin-top: 10px;
@@ -162,7 +165,11 @@
 
 
 @media  (max-width: 768px){
+  .question__content {
+    padding: 20px 25px;
+  }
   .left, .right {
-       width: 90%;
+    padding: 0;
+       width: 100%;
   }
 }

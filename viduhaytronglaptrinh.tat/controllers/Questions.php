@@ -4,8 +4,46 @@ class Questions extends Controller {
     public $dl = [];
     function index() {
         $this->title = "Câu hỏi";
-       // $this->view("QuestionMe");
+        //$this->view("QuestionWrite");
         $this->page('news',1);
+    }
+    function write(){
+        if(!isset($_SESSION['user'])){
+            $this->view("PageError");
+            die;
+        }
+        if(isset($_POST['title']) || isset($_POST['data']) ){
+            $userInfo = $this->model("ProfileModel")->getUser($_SESSION['user']['id']);
+            $userName = $userInfo['user_name'];
+            $userId = $userInfo['id_user'];
+            $questionTitle = $_POST['title'];
+            $title_ = relayVNM($questionTitle);
+            $questionData = addslashes($_POST['data']);
+                if($this->model('QuestionModel')->createQuestion($userId, $questionTitle, $questionData)){
+                    echo json_encode(array(
+                        'position' => '1',
+                        'messenger' => 'Tạo bài vết thành công!'
+                    )); die;
+                }else{
+                    echo json_encode(array(
+                        'position' => '0',
+                        'messenger' => 'Đã có lỗi xảy ra 1!'
+                    )); die;
+                }
+        }else{
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra 2!'
+            )); die;
+        }
+    }
+    function questionWrite(){
+        if(!isset($_SESSION['user'])){
+            $this->view("PageError");
+            die;
+        }
+        $this->title = "Đặt câu hỏi";
+        $this->view("QuestionWrite");
     }
     function Comment(){
         if(isset($_POST['id']) && isset($_POST['content'])){
@@ -94,10 +132,7 @@ class Questions extends Controller {
         }
         if($t != -1){
             array_splice($this->dl['questionLikeTitle'], $t, 1);
-            // unset($this->dl['postLikeTitle'][$t]);
-            // array_values($this->dl['postLikeTitle']); 
         }
-        // detailArr($this->dl);
         $model->disConnect();
         $this->view("QuestionDetail");
         
@@ -185,11 +220,37 @@ class Questions extends Controller {
         $this->dl['page'] = $page;
         $this->dl['soTrang'] = $sotrangdl;
         
-        // // detailArr($this->dl);
+        // detailArr($this->dl);
 
         $model->disConnect();
         $this->view('QuestionMe');
         
+    }
+    function report(){
+        // detailArr($GLOBALS);
+        // die;
+        if(!isset($_SESSION['user']) || !isset($_POST['id']) || !isset($_POST['content'])){
+            $this->view("PageError");
+            die;
+        }
+        if($_POST['content'] == "" || $_POST['content'] == null){
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra!'
+            ));
+            die;
+        }
+        if($this->model("QuestionModel")->report($_POST['id'], $_SESSION['user']['id'], $_POST['content'])){
+            echo json_encode(array(
+                'position' => '1',
+                'messenger' => 'Báo cáo bài viết thành công!'
+            ));
+        }else{
+            echo json_encode(array(
+                'position' => '0',
+                'messenger' => 'Đã có lỗi xảy ra!'
+            ));
+        }
     }
     
 }

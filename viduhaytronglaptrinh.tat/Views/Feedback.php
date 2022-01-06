@@ -33,7 +33,7 @@
         </div>
         <div class="btnSend">
             <div></div>
-            <button class="btn btn--success">Gửi</button>
+            <button id="btn_feedback" class="btn btn--success">Gửi</button>
         </div>
     </div>
 </div>
@@ -51,4 +51,54 @@
 </div>
 </div>
 
+<script>
+$(document).ready(function(){
+    $("#btn_feedback").on("click", function(){
+        var name = $("#Fb_name").val();
+        var email = $("#Fb_email").val();
+        var sdt = $("#Fb_sdt").val();
+        var title = $("#Fb_tieude").val();
+        var content = $("#Fb_noidung").val();
+        if(name == "" || name == null){
+            alert("Vui lòng nhập họ tên!");
+            return;
+        }
+        if(email == "" || email == null){
+            alert("Vui lòng nhập email!");
+            return;
+        }
+        if(sdt == "" || sdt == null){
+            alert("Vui lòng nhập số điện thoại!");
+            return;
+        }
+        if(title == "" || title == null){
+            alert("Vui lòng nhập tiêu đề!");
+            return;
+        }
+        if(content == "" || content == null){
+            alert("Vui lòng nhập nội dung!");
+            return;
+        }
+        
+        $.ajax({
+            url: "feedback/send",
+            type: "post",
+            data: {
+                name: name,
+                email: email,
+                sdt: sdt,
+                title: title,
+                content: content
+            },
+            success: function(response){
+                let rs = JSON.parse(response);
+                alert(rs.messenger);
+                if(rs.position == "1"){
+                    location.reload();
+                }
+            }
+        });
+    });
+});
+</script>
 <?php require_once 'Views/includes/footer.php' ?>

@@ -9,47 +9,35 @@
         <p>Chia sẻ kiến thức , cùng nhau phát triển</p>
     </div>
     <div class="header_button">
-        <button class="question_button btn--success-1"><h3>Đặt câu hỏi</h3></button>
+        <button class="btn--success-1"><a href="Questions/questionWrite">Đặt câu hỏi</a></button>
     </div>
 </div>
 <div class="question__content">
     <div class="left">
         <div class="question_list_menu">
             <ul>
-                <li><a href="">Tất cả</a></li>
-                <?php
-                    if(isset($_SESSION['user'])){
-                        echo '
-                        <li><a href="">Bài viết của tôi</a></li>';
-                      }
-                ?>
+                <li><a href="/Questions">Tất cả</a></li>
             </ul>
-            <div>
+            <!-- <div>
            <p>Sắp xếp</p>
            <select name="" id="select_page">
              <?php
                $mode = $this->dl['select'];
-               if($mode =='views'){
+               //if($mode =='views'){
                  echo'
                  <option value="news">Mới nhất</option>
                  <option value="views" selected>Lượt xem</option>
                  ';
-               }else {
+               //}else {
                  echo '
                  <option value="news" selected>Mới nhất</option>
                  <option value="views">Lượt xem</option>
                  ';
-               }
+               //}
              ?>
            </select>
-         </div>
-            <!--<div>
-                <p>Sắp xếp</p>
-                <select name="" id="">
-                    <option value="1">Mới nhất</option>
-                    <option value="2">Lượt xem</option>
-                </select>
-            </div>-->
+         </div> -->
+           
         </div>
         <div class="question_list_content" id="listQuestion">
             <?php

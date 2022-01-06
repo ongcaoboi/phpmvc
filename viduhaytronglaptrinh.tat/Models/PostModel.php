@@ -161,4 +161,12 @@ class PostModel extends DB
       return $kq;
     }
   }
+  function report($id_post, $id_user,  $content){
+    if($this->conn){
+      $sql = "INSERT into report(id_report, id_user, id_post, id_question, report_content) values (NULL, '{$id_user}', '{$id_post}', NULL, '{$content}')";
+      $kq = $this->query($sql);
+      $this->disConnect();
+      return $kq;
+    }
+  }
 }

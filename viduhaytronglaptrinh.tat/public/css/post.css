@@ -6,7 +6,6 @@
   height: auto;
   z-index: 0;  
 }
-
 .post__header {
   height: 150px;
   display: flex;
@@ -14,6 +13,7 @@
   justify-content: space-between;
   background-color: #040404;
 }
+
 
 .post__header--content {
   padding: 40px 0 40px 50px;
@@ -127,6 +127,9 @@ select {
 .title {
   display: flex;
   flex-wrap: wrap;
+}
+.title > a {
+  margin: 5px 0;
 }
 .title .topic {
   margin-left: 5px;

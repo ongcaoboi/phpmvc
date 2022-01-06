@@ -763,6 +763,10 @@ footer .footer__container .noi-dung.about p {
 	.header__btn-mobile {
 		display: block;
 	}
+	.container__main-content {
+		width: 100vw;
+		/* margin-bottom: 6rem; */
+	}
 }
 /* ::-webkit-scrollbar {
     width: 5px;

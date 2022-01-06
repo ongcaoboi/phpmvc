@@ -80,8 +80,8 @@
             $comment = $arr[$i]['slComment'];
             $view = $arr[$i]['post_views'];
             $time = $arr[$i]['post_date_created'];
-            $linkTopicDetalis = getLinkPostDetails($topic.' '.$idTopic);
-            $linkDetalis = getLinkPostDetails($title.' '.$idPost);
+              $linkTopicDetalis = getLinkPostDetails($topic.' '.$idTopic);
+              $linkDetalis = getLinkPostDetails($title.' '.$idPost);
           // echo $name;
         echo '
         <div class="content__list">
