@@ -355,8 +355,6 @@ class Post extends Controller {
         echo json_encode($arr);
     }
     function report(){
-        // detailArr($GLOBALS);
-        // die;
         if(!isset($_SESSION['user']) || !isset($_POST['id']) || !isset($_POST['content'])){
             $this->view("PageError");
             die;

@@ -349,7 +349,7 @@ $(document).ready(function(){
         });
     });
     $('#btn_delete_question').on('click', function(){
-        if(confirm("Bạn có chắc chắn xoá bài viết này không")){
+        if(confirm("Bạn có chắc chắn xoá câu hỏi này không")){
             $.ajax({
                 url: "admin/deleteQuestion",
                 type: "post",

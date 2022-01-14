@@ -95,7 +95,7 @@
                                     <p>'.$view.'</p>
                                 </div>
                                 <div class="status-list-img">
-                                    <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
+                                    <img src="'.$img.'" alt="ảnh">
                                     <p>'.$time.'</p>
                                 </div>
                             </div>
@@ -105,81 +105,7 @@
                 ';
             } 
             }?>
-            
-
-            <!-- <div class="content">
-                <div class="media">
-                    <a href="" class="media-left">
-                        <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
-                    </a>
-                    <div class="media-body">
-                        <a href="" class="user">
-                            <h3>Tên tài khoản</h3>
-                        </a>
-                        <div class="ques">
-                            <a href="">
-                                <div class="title--ques">Tiêu đề câu hỏi </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam fugit at officiis modi, quidem corrupti, quis quibusdam aliquid quo laborum autem eligendi beatae ea quam ratione,Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odit atque corrupti praesentium consectetur adipisci quam incidunt veritatis perferendis soluta nisi, inventore molestias vel beatae impedit quia. Quos, dolor nemo.lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores magnam ratione accusantium sapiente. Beatae quae, ducimus sit quo assumenda soluta aspernatur amet vel vitae tenetur molestias sequi, nam quia ea. inlorventore eveniet.</p>
-                            </a>
-                        </div>
-                        <div class="question__status">
-                            <div class="status-list">
-                                <i class="fas fa-thumbs-up"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list">
-                                <i class="far fa-comments"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list">
-                                <i class="far fa-eye"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list-img">
-                                <img src="public/img/e61df3c3768380ddd992.jpg" alt="ảnh">
-                                <p>9 giờ trước</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-
-            <div class="content">
-                <div class="media">
-                    <a href="" class="media-left">
-                        <img src="public/img/img_user_admin.png" alt="ảnh">
-                    </a>
-                    <div class="media-body">
-                        <a href="" class="user">
-                            <h3>Tên tài khoản</h3>
-                        </a>
-                        <div class="ques">
-                            <a href="">
-                                <div class="title--ques">Tiêu đề câu hỏi </div>
-                                <p>Loriis modi, quidem corrupti, quis quibusdam aliquid quo laborum autem eligendi beatae ea quam ratione, inventore eveniet.</p>
-                            </a>
-                        </div>
-                        <div class="question__status">
-                            <div class="status-list">
-                                <i class="fas fa-thumbs-up"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list">
-                                <i class="far fa-comments"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list">
-                                <i class="far fa-eye"></i>
-                                <p>9</p>
-                            </div>
-                            <div class="status-list-img">
-                                <img src="public/img/img_user_admin.png" alt="ảnh">
-                                <p>9 giờ trước</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div> -->
+        
         </div>
         <div class="post__list-page">
         <?php
@@ -221,49 +147,6 @@
 
     </div>
     <div class="right">
-        <!-- <div class="slider__questions">
-            <div class="questions__header-">
-                 <h2>Câu hỏi mới nhất </h2>
-            </div>
-            <div class="questions-list">
-                <a href="" class="questions-list__items">
-                    <h3>Đây là tên</h3>
-                    <div class="status">
-                        <div class="status-list">
-                            <i class="fas fa-thumbs-up"></i>
-                            <p>10</p>
-                        </div>
-                        <div class="status-list">
-                            <i class="far fa-comments"></i>
-                            <p>2</p>
-                        </div>
-                        <div class="status-list">
-                            <i class="far fa-eye"></i>
-                            <p>10.000</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="questions-list">
-                <a href="" class="questions-list__items">
-                    <h3>Đây là tên</h3>
-                    <div class="status">
-                        <div class="status-list">
-                            <i class="fas fa-thumbs-up"></i>
-                            <p>10</p>
-                        </div>
-                        <div class="status-list">
-                            <i class="far fa-comments"></i>
-                            <p>2</p>
-                        </div>
-                        <div class="status-list">
-                            <i class="far fa-eye"></i>
-                            <p>10.000</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div> -->
         <?php require_once 'Views/includes/postSlider.php' ?>
     </div>  
 </div>
