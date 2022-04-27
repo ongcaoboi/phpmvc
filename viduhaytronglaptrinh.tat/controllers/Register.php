@@ -81,7 +81,7 @@ class Register extends Controller {
             $mail->Host = 'smtp.gmail.com';  //SMTP servers
             $mail->SMTPAuth = true; // Enable authentication
             $mail->Username = 'codeexamplemail@gmail.com'; // SMTP username
-            $mail->Password = '1134788964a';   // SMTP password
+            $mail->Password = '';   // SMTP password
             $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
             $mail->Port = 465;  // port to connect to   587/465              
             $mail->setFrom('codeexamplemail@gmail.com', 'CodeEX' ); 
