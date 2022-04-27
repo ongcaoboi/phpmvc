@@ -1,5 +1,5 @@
 # Ví dụ hay trong học lập trình
-## Đây là dụ án cuối kỳ môn lập trình web
+
 ## Dự án do 3 sinh viên gồm:
 - Trưởng nhóm: Hứa Tuấn Anh
 - Thành viên: Nguyễn Văn Hoài Trung
@@ -7,8 +7,8 @@
 
 ## Tông tin dự án
 ### Ngôn ngữ sử dụng 
-- Back-end: Php
-- Font-end: Html, css, javascript, jquery-ajax
+- Back-end: PHP
+- Font-end: HTML/CSS, Javascript, JQuery ajax
 - Database: MySql
 ### Thư viện được nhúng và sử dụng
 - PHPMailer-master: Thư viện dùng để gửi mail
@@ -17,7 +17,7 @@
 - Bootstrap, jquery
 ## Cấu trúc thư mục
 ### docs:
-- Thư mục Bao-Cao: Chứa các file báo cáo hằng tuần và file báo cáo cuối kỳ
+- Thư mục Bao-Cao: Chứa các file báo cáo
 - Thư mục database: Chức file sql của dự án
 - File README.md 
 ### viduhaytronglaptrinh.tat : thư mục source code của dự án
